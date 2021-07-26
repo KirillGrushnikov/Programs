@@ -1,0 +1,30 @@
+﻿  Source.cpp
+c:\users\grush\onedrive\рабочий стол\программы\своё\tic-toc\tic-toc\source.cpp(49): warning C4244: аргумент: преобразование "int" в "T", возможна потеря данных
+          with
+          [
+              T=float
+          ]
+c:\users\grush\onedrive\рабочий стол\программы\своё\tic-toc\tic-toc\source.cpp(50): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+c:\users\grush\onedrive\рабочий стол\программы\своё\tic-toc\tic-toc\source.cpp(54): warning C4244: аргумент: преобразование "int" в "T", возможна потеря данных
+          with
+          [
+              T=float
+          ]
+c:\users\grush\onedrive\рабочий стол\программы\своё\tic-toc\tic-toc\source.cpp(55): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+c:\users\grush\onedrive\рабочий стол\программы\своё\tic-toc\tic-toc\source.cpp(136): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+c:\users\grush\onedrive\рабочий стол\программы\своё\tic-toc\tic-toc\source.cpp(141): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+c:\users\grush\onedrive\рабочий стол\программы\своё\tic-toc\tic-toc\source.cpp(151): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+c:\users\grush\onedrive\рабочий стол\программы\своё\tic-toc\tic-toc\source.cpp(156): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+c:\users\grush\onedrive\рабочий стол\программы\своё\tic-toc\tic-toc\source.cpp(172): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+c:\users\grush\onedrive\рабочий стол\программы\своё\tic-toc\tic-toc\source.cpp(187): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+c:\users\grush\onedrive\рабочий стол\программы\своё\tic-toc\tic-toc\source.cpp(206): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+c:\users\grush\onedrive\рабочий стол\программы\своё\tic-toc\tic-toc\source.cpp(215): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+c:\users\grush\onedrive\рабочий стол\программы\своё\tic-toc\tic-toc\source.cpp(236): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+c:\users\grush\onedrive\рабочий стол\программы\своё\tic-toc\tic-toc\source.cpp(266): warning C4018: <: несоответствие типов со знаком и без знака
+c:\users\grush\onedrive\рабочий стол\программы\своё\tic-toc\tic-toc\source.cpp(269): warning C4018: <: несоответствие типов со знаком и без знака
+  Создание кода
+  1 of 221 functions ( 0.5%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    0 functions had inline decision re-evaluated but remain unchanged
+  Создание кода завершено
+  Tic-Toc.vcxproj -> C:\Users\Grush\OneDrive\Рабочий стол\Программы\Своё\Tic-Toc\Release\Tic-Toc.exe
