@@ -57,8 +57,8 @@ public:
 		float DNa = 2 / DN;
 		float DMa = 2 / DM;
 
-		x = pow(abs(cos(angle)), DMa) * a * sgn(cos(angle));
-		y = pow(abs(sin(angle)), DNa) * b * sgn(sin(angle));
+		x = pow(abs(cos(angle)), DNa) * a * sgn(cos(angle));
+		y = pow(abs(sin(angle)), DMa) * b * sgn(sin(angle));
 		return sf::Vector2f(x, y);
 	}
 };
