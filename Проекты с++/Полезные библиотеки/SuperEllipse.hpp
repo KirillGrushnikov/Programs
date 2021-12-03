@@ -1,7 +1,5 @@
 #include "SFML/Graphics.hpp"
 
-using namespace sf;
-
 class SupEllipseShape : public sf::Shape
 {
 private:
