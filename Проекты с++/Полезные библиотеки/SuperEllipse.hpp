@@ -5,11 +5,17 @@ using namespace sf;
 class SupEllipseShape : public sf::Shape
 {
 private:
-#define sgn(a) ((a < 0) ? -1 : ((a > 0) ? 1 : 0))
 	float DN = 2;
 	float DM = 2;
 	sf::Vector2f m_radius;
 	unsigned PointCount = 100;
+	
+	int sgn(float a) const
+	{
+		if(a < 0) return -1;
+		if (a > 0) return 1;
+		return 0;
+	}
 public:
 
 	explicit SupEllipseShape(const sf::Vector2f& radius = sf::Vector2f(0, 0)) : m_radius(radius)
