@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Info>
+   <objectgroup id="1" name="Settings">
+       <object name="VolumeMusic" value="0,000000" />
+       <object name="VolumeEffect" value="0,000000" />
+       <object name="FullScreen" value="0,000000" />
+   </objectgroup>
+
+   <objectgroup id="2" name="Statistic">
+       <object name="LastLevel" value="0,000000" />
+       <object name="AllStrokes" value="257,000000" />
+       <object name="MeamCountStrokes" value="1,000000" />
+   </objectgroup>
+</Info>
