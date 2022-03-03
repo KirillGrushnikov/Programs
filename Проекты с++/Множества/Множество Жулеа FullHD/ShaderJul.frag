@@ -18,7 +18,7 @@ vec4 maldebrot(vec2 pos)
     {
         z = vec2( (pow(z.x, 2) - pow(z.y, 2) + c.x), (2 * z.x * z.y + c.y));
         if (pow(z.x, 2) + pow(z.y, 2) > 4)
-            break;
+			break;
         num_iter++;
     }
     vec2 col = vec2(num_iter / u_max_iter, num_iter / u_max_iter);
