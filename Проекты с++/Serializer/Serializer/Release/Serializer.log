@@ -1,0 +1,28 @@
+﻿  Source.cpp
+D:\Программы\Своё\Serializer\Serializer\Serializer.h(33,18): warning C4244: инициализация: преобразование "int64_t" в "int32_t", возможна потеря данных
+D:\Программы\Своё\Serializer\Serializer\SerializeTest.hpp(23,4): warning C5051: для атрибута "maybe_unused" требуется по меньшей мере "/std:c++17"; игнорируется
+D:\Программы\Своё\Serializer\Serializer\SerializeTest.hpp(27,4): warning C5051: для атрибута "maybe_unused" требуется по меньшей мере "/std:c++17"; игнорируется
+D:\Программы\Своё\Serializer\Serializer\Source.cpp(62,1): warning C4267: аргумент: преобразование из "size_t" в "int16_t"; возможна потеря данных
+D:\Программы\Своё\Serializer\Serializer\Source.cpp(85,21): warning C4018: <: несоответствие типов со знаком и без знака
+D:\Программы\Своё\Serializer\Serializer\Source.cpp(110,21): warning C4018: <: несоответствие типов со знаком и без знака
+D:\Программы\Своё\Serializer\Serializer\Serializer.h(19,1): warning C4554: ">>": проверьте приоритет операторов на ошибки; для уточнения приоритета используйте скобки
+D:\Программы\Своё\Serializer\Serializer\Serializer.h(27): message : выполняется компиляция ссылки на экземпляр шаблон функции "void Core::encode<int32_t>(std::vector<uint8_t,std::allocator<uint8_t>> *,int16_t *,T)"
+          with
+          [
+              T=int32_t
+          ]
+D:\Программы\Своё\Serializer\Serializer\Serializer.h(19,38): warning C4244: =: преобразование "T" в "_Ty", возможна потеря данных
+          with
+          [
+              T=int64_t
+          ]
+          and
+          [
+              _Ty=uint8_t
+          ]
+  Создание кода
+  0 of 734 functions ( 0.0%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    0 functions had inline decision re-evaluated but remain unchanged
+  Создание кода завершено
+  Serializer.vcxproj -> D:\Программы\Своё\Serializer\Release\Serializer.exe
