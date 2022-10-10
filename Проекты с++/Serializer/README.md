@@ -9,8 +9,11 @@
 Пример сохранения кастомных данных в файле:
 <img src="GitPhoto/CastomObject.PNG">
 </h2>
+<h2>
 Скриншот cmd:
 <img src="GitPhoto/TestCmd.PNG">
+</h2>
+<h2>
 Скриншот данных в файле во время тестирования:
 <img src="GitPhoto/TestFile.PNG">
-
+</h2>
