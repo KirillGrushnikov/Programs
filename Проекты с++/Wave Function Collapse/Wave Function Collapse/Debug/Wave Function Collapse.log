@@ -1,0 +1,42 @@
+﻿  Source.cpp
+D:\Программы\Своё\Wave Function Collapse\Wave Function Collapse\Source.cpp(63,20): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+D:\Программы\Своё\Wave Function Collapse\Wave Function Collapse\Source.cpp(97,23): warning C4018: <: несоответствие типов со знаком и без знака
+D:\Программы\Своё\Wave Function Collapse\Wave Function Collapse\Source.cpp(121,31): warning C4018: <: несоответствие типов со знаком и без знака
+  WaveFunctionCollapse2D.cpp
+D:\Программы\Своё\Wave Function Collapse\Wave Function Collapse\WaveFunctionCollapse2D.cpp(16,14): warning C4244: =: преобразование "time_t" в "int", возможна потеря данных
+D:\Программы\Своё\Wave Function Collapse\Wave Function Collapse\WaveFunctionCollapse2D.cpp(70,8): warning C4018: >: несоответствие типов со знаком и без знака
+D:\Программы\Своё\Wave Function Collapse\Wave Function Collapse\WaveFunctionCollapse2D.cpp(75,8): warning C4018: >: несоответствие типов со знаком и без знака
+D:\Программы\Своё\Wave Function Collapse\Wave Function Collapse\WaveFunctionCollapse2D.cpp(81,14): warning C4018: <: несоответствие типов со знаком и без знака
+D:\Программы\Своё\Wave Function Collapse\Wave Function Collapse\WaveFunctionCollapse2D.cpp(100,20): warning C4018: <: несоответствие типов со знаком и без знака
+D:\Программы\Своё\Wave Function Collapse\Wave Function Collapse\WaveFunctionCollapse2D.cpp(107,20): warning C4018: <: несоответствие типов со знаком и без знака
+D:\Программы\Своё\Wave Function Collapse\Wave Function Collapse\WaveFunctionCollapse2D.cpp(124,20): warning C4018: <: несоответствие типов со знаком и без знака
+D:\Программы\Своё\Wave Function Collapse\Wave Function Collapse\WaveFunctionCollapse2D.cpp(126,21): warning C4018: <: несоответствие типов со знаком и без знака
+D:\Программы\Своё\Wave Function Collapse\Wave Function Collapse\WaveFunctionCollapse2D.cpp(141,20): warning C4018: <: несоответствие типов со знаком и без знака
+D:\Программы\Своё\Wave Function Collapse\Wave Function Collapse\WaveFunctionCollapse2D.cpp(162,20): warning C4018: <: несоответствие типов со знаком и без знака
+D:\Программы\Своё\Wave Function Collapse\Wave Function Collapse\WaveFunctionCollapse2D.cpp(180,20): warning C4018: <: несоответствие типов со знаком и без знака
+D:\Программы\Своё\Wave Function Collapse\Wave Function Collapse\WaveFunctionCollapse2D.cpp(182,35): warning C4018: >: несоответствие типов со знаком и без знака
+D:\Программы\Своё\Wave Function Collapse\Wave Function Collapse\WaveFunctionCollapse2D.cpp(235,65): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+D:\Программы\Своё\Wave Function Collapse\Wave Function Collapse\WaveFunctionCollapse2D.cpp(251,24): warning C4018: <: несоответствие типов со знаком и без знака
+D:\Программы\Своё\Wave Function Collapse\Wave Function Collapse\WaveFunctionCollapse2D.cpp(267,25): warning C4018: <: несоответствие типов со знаком и без знака
+D:\Программы\Своё\Wave Function Collapse\Wave Function Collapse\WaveFunctionCollapse2D.cpp(282,25): warning C4018: <: несоответствие типов со знаком и без знака
+D:\Программы\Своё\Wave Function Collapse\Wave Function Collapse\WaveFunctionCollapse2D.cpp(298,25): warning C4018: <: несоответствие типов со знаком и без знака
+D:\Программы\Своё\Wave Function Collapse\Wave Function Collapse\WaveFunctionCollapse2D.cpp(335,20): warning C4018: <: несоответствие типов со знаком и без знака
+D:\Программы\Своё\Wave Function Collapse\Wave Function Collapse\WaveFunctionCollapse2D.cpp(355,20): warning C4018: <: несоответствие типов со знаком и без знака
+D:\Программы\Своё\Wave Function Collapse\Wave Function Collapse\WaveFunctionCollapse2D.cpp(364,23): warning C4018: <: несоответствие типов со знаком и без знака
+D:\Программы\Своё\Wave Function Collapse\Wave Function Collapse\WaveFunctionCollapse2D.cpp(374,23): warning C4018: <: несоответствие типов со знаком и без знака
+D:\Программы\Своё\Wave Function Collapse\Wave Function Collapse\WaveFunctionCollapse2D.cpp(384,23): warning C4018: <: несоответствие типов со знаком и без знака
+D:\Программы\Своё\Wave Function Collapse\Wave Function Collapse\WaveFunctionCollapse2D.cpp(394,23): warning C4018: <: несоответствие типов со знаком и без знака
+D:\Программы\Своё\Wave Function Collapse\Wave Function Collapse\WaveFunctionCollapse2D.cpp(410,21): warning C4018: <: несоответствие типов со знаком и без знака
+D:\Программы\Своё\Wave Function Collapse\Wave Function Collapse\WaveFunctionCollapse2D.cpp(452,20): warning C4018: <: несоответствие типов со знаком и без знака
+D:\Программы\Своё\Wave Function Collapse\Wave Function Collapse\WaveFunctionCollapse2D.cpp(470,26): warning C4018: <: несоответствие типов со знаком и без знака
+D:\Программы\Своё\Wave Function Collapse\Wave Function Collapse\WaveFunctionCollapse2D.cpp(482,26): warning C4018: <: несоответствие типов со знаком и без знака
+D:\Программы\Своё\Wave Function Collapse\Wave Function Collapse\WaveFunctionCollapse2D.cpp(494,26): warning C4018: <: несоответствие типов со знаком и без знака
+D:\Программы\Своё\Wave Function Collapse\Wave Function Collapse\WaveFunctionCollapse2D.cpp(506,26): warning C4018: <: несоответствие типов со знаком и без знака
+D:\Программы\Своё\Wave Function Collapse\Wave Function Collapse\WaveFunctionCollapse2D.cpp(542,20): warning C4018: <: несоответствие типов со знаком и без знака
+D:\Программы\Своё\Wave Function Collapse\Wave Function Collapse\WaveFunctionCollapse2D.cpp(553,20): warning C4018: <: несоответствие типов со знаком и без знака
+D:\Программы\Своё\Wave Function Collapse\Wave Function Collapse\WaveFunctionCollapse2D.cpp(555,21): warning C4018: <: несоответствие типов со знаком и без знака
+D:\Программы\Своё\Wave Function Collapse\Wave Function Collapse\WaveFunctionCollapse2D.cpp(613,20): warning C4018: <: несоответствие типов со знаком и без знака
+D:\Программы\Своё\Wave Function Collapse\Wave Function Collapse\WaveFunctionCollapse2D.cpp(615,21): warning C4018: <: несоответствие типов со знаком и без знака
+  Создание кода...
+  LINK : не найден или не выполнена сборка D:\Программы\Своё\Wave Function Collapse\Debug\Wave Function Collapse.exe при последней инкрементной компоновке; выполняется полная компоновка
+  Wave Function Collapse.vcxproj -> D:\Программы\Своё\Wave Function Collapse\Debug\Wave Function Collapse.exe
