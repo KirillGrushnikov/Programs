@@ -24,6 +24,7 @@ struct Tile
 	std::vector<int> connections[4]; // свази (UP: [0 - тайлом, 1, ...], RIGHT: [...], ...)
 	int rotaion = 0;
 	bool is_rotate = true;
+	int real_tile_id;
 };
 
 
@@ -40,6 +41,7 @@ class WaveFunctionCollapse2D
 {
 private:
 	std::vector<Cell> grid;
+	std::vector<Cell> user_grid;
 	sf::Vector2i size;
 
 	std::vector<Tile> tiles;
@@ -52,10 +54,11 @@ private:
 	bool random;
 
 	int seed;
-	void createConnections();
-	void createRotationsConnections();
+	void createConnections(float& progress);
+	void createRotationsConnections(float& progress);
 
 	bool load_proggress;
+	int count_tiles;
 public:
 	bool is_complete;
 	bool is_failed;
@@ -67,12 +70,15 @@ public:
 	void setSize(int, int);
 	sf::Vector2i getSize();
 
+	sf::Vector2i getSizeTile();
+
 	void setIsDrawing(bool is_drawing, float tile_wight = 0, float tile_height = 0);
 
 	void setRotations(bool);
 
-	void setTileInGrid(int tile_id, unsigned x, unsigned y);
-	void create();
+	void setTileInGrid(int tile_id, unsigned x, unsigned y, int rotation = 0);
+	void clearPrevTiles();
+	void create(float& progress);
 	void update();
 	void clear();
 

@@ -10,14 +10,6 @@ WaveFunctionCollapse2D::WaveFunctionCollapse2D(int size_x, int size_y) :
 {
 	setSize(size_x, size_y);
 	tex_void.loadFromFile("tiles\\void.png");
-
-	if (random)
-	{
-		seed = time(NULL);
-		srand(seed);
-	}
-	else
-		srand(seed);
 }
 
 void WaveFunctionCollapse2D::addTile(std::string filename, bool rotation)
@@ -25,7 +17,9 @@ void WaveFunctionCollapse2D::addTile(std::string filename, bool rotation)
 	Tile tile;
 	tile.image_name = filename;
 	tile.is_rotate = rotation;
+	tile.real_tile_id = count_tiles;
 	tiles.push_back(tile);
+	count_tiles++;
 }
 
 void WaveFunctionCollapse2D::setSize(int wight, int height)
@@ -38,6 +32,11 @@ void WaveFunctionCollapse2D::setSize(int wight, int height)
 sf::Vector2i WaveFunctionCollapse2D::getSize()
 {
 	return size;
+}
+
+sf::Vector2i WaveFunctionCollapse2D::getSizeTile()
+{
+	return sf::Vector2i(drawing_tiles[0].sprite.getSize());
 }
 
 void WaveFunctionCollapse2D::setIsDrawing(bool is_drawing, float tile_wight, float tile_height)
@@ -65,7 +64,7 @@ void WaveFunctionCollapse2D::setRotations(bool is_rotation)
 	this->is_rotation = is_rotation;
 }
 
-void WaveFunctionCollapse2D::setTileInGrid(int tile_id, unsigned x, unsigned y)
+void WaveFunctionCollapse2D::setTileInGrid(int tile_id, unsigned x, unsigned y, int rotation)
 {
 	if (x > size.x)
 	{
@@ -77,30 +76,91 @@ void WaveFunctionCollapse2D::setTileInGrid(int tile_id, unsigned x, unsigned y)
 		std::cout << "Error: " << y << " over grid height" << std::endl;
 		return;
 	}
-	
-	if (tile_id < tiles.size())
+
+	if (tile_id == -1)
 	{
-		grid[x + y * size.x].collapsed = true;
-		grid[x + y * size.x].options[0] = tile_id;
+		int index = (x + y * size.x);
+
+		std::vector<int> cell_options;
+		for (int i = 0; i < tiles.size(); i++)
+			cell_options.push_back(i);
+
+		grid[index].collapsed = false;
+		grid[index].options = cell_options;
+		grid[index].id = index;
+
+		drawing_tiles[index].texture = tex_void;
+		drawing_tiles[index].sprite.setTextureRect(sf::IntRect(sf::Vector2i(0, 0), (sf::Vector2i)drawing_tiles[index].texture.getSize()));
+		drawing_tiles[index].is_set = false;
+		drawing_tiles[index].sprite.setRotation(0);
+
+		for(int i = 0; i < user_grid.size(); i++)
+			if (user_grid[i].id == index)
+			{
+				user_grid.erase(user_grid.begin() + i);
+				break;
+			}
+
 		return;
 	}
 
-	std::cout << "Error: tile - " << tile_id << " not found" << std::endl;
+	if (tile_id < tiles.size())
+	{
+		Cell cell;
+		int index = (x + y * size.x);
+
+		grid[index].collapsed = true;
+
+		cell.id = index;
+
+		int real_index;
+		if (rotation == 0)
+			real_index = tile_id;
+		else
+			real_index = (count_tiles + (tile_id * 3)) + (rotation / 90 - 1);
+
+		cell.options.push_back(real_index);
+		grid[index].options = cell.options;
+
+		cell.options.push_back(tile_id);
+		cell.options.push_back(rotation);
+
+		drawing_tiles[index].texture = tiles_texture[tile_id];
+		drawing_tiles[index].sprite.setTextureRect(sf::IntRect(sf::Vector2i(0, 0), (sf::Vector2i)drawing_tiles[index].texture.getSize()));
+		drawing_tiles[index].sprite.setRotation(rotation);
+		drawing_tiles[index].is_set = true;
+
+		user_grid.push_back(cell);
+		return;
+	}
+	if(!grid[x + y * size.x].collapsed)
+		std::cout << "Error: tile - " << tile_id << " not found" << std::endl;
 }
 
-void WaveFunctionCollapse2D::create()
+void WaveFunctionCollapse2D::clearPrevTiles()
 {
+	user_grid.clear();
+}
 
-	if (is_rotation)
-		createRotationsConnections();
+void WaveFunctionCollapse2D::create(float& progress)
+{
+	if (random)
+	{
+		srand(std::time(NULL));
+	}
 	else
-		createConnections();
+		srand(seed);
 
 	tiles_texture.resize(tiles.size());
 	for (int i = 0; i < tiles.size(); i++)
 	{
 		tiles_texture[i].loadFromFile(tiles[i].image_name);
 	}
+
+	if (is_rotation)
+		createRotationsConnections(progress);
+	else
+		createConnections(progress);
 
 	// create grid
 	std::vector<int> cell_options;
@@ -204,17 +264,6 @@ void WaveFunctionCollapse2D::update()
 		is_failed = true;
 	}
 
-	/*
-	for (int i = 0; i < grid_copy.size(); i++)
-	{
-		printf("cell[%d]: ", i);
-		for (int j = 0; j < grid_copy[i].options.size(); j++)
-			std::cout << grid_copy[i].options[j] << " ";
-
-		std::cout << std::endl;
-	}
-	std::cout << std::endl;
-	*/
 	std::vector<Cell> nextGrid;
 	nextGrid.resize(size.x * size.y);
 
@@ -229,10 +278,10 @@ void WaveFunctionCollapse2D::update()
 				if (is_drawing && !drawing_tiles[index].is_set)
 				{
 					int id = grid[index].options[0];
-					drawing_tiles[index].texture = tiles_texture[id];
-					drawing_tiles[index].sprite.setTextureRect(sf::IntRect(sf::Vector2i(0, 0), (sf::Vector2i)drawing_tiles[index].texture.getSize()));
-					if(is_rotation)
+					drawing_tiles[index].texture = tiles_texture[tiles[id].real_tile_id];
+					if(tiles[id].is_rotate)
 						drawing_tiles[index].sprite.setRotation(tiles[id].rotaion * 90);
+					drawing_tiles[index].sprite.setTextureRect(sf::IntRect(sf::Vector2i(0, 0), (sf::Vector2i)drawing_tiles[index].texture.getSize()));
 					drawing_tiles[index].is_set = true;
 				}
 			}
@@ -240,7 +289,6 @@ void WaveFunctionCollapse2D::update()
 			{
 				std::vector<int> options = grid[index].options;
 				
-
 				// Look up
 				if (j > 0)
 				{
@@ -348,6 +396,20 @@ void WaveFunctionCollapse2D::clear()
 			drawing_tiles[index].is_set = false;
 			drawing_tiles[index].sprite.setRotation(0);
 		}
+
+	for (int i = 0; i < user_grid.size(); i++)
+	{
+		int index = user_grid[i].id;
+		grid[index].options.resize(1);
+		grid[index].options[0] = user_grid[i].options[0];
+		grid[index].collapsed = true;
+
+		drawing_tiles[index].texture = tiles_texture[user_grid[i].options[1]];
+		drawing_tiles[index].sprite.setTextureRect(sf::IntRect(sf::Vector2i(0, 0), (sf::Vector2i)drawing_tiles[index].texture.getSize()));
+		drawing_tiles[index].sprite.setRotation(user_grid[i].options[2]);
+		drawing_tiles[index].is_set = true;
+
+	}
 }
 
 void WaveFunctionCollapse2D::showConnections()
@@ -433,7 +495,8 @@ int WaveFunctionCollapse2D::getSeed()
 int* WaveFunctionCollapse2D::generateGrid(int attempts)
 {
 	is_drawing = false;
-	create();
+	float progress = 0;
+	create(progress);
 
 	while (!is_complete)
 	{
@@ -547,14 +610,14 @@ bool chekPixels(std::vector<sf::Color>& first, std::vector<sf::Color>& second)
 	return true;
 }
 
-void WaveFunctionCollapse2D::createConnections()
+void WaveFunctionCollapse2D::createConnections(float& progress)
 {
-	float progress = 0;
+	float _progress = 0;
 	for (int i = 0; i < tiles.size(); i++)
 	{
 		for (int j = 0; j < tiles.size(); j++)
 		{
-			progress++;
+			_progress++;
 			// create UP //
 			std::vector<sf::Color> up_pixels, down_pixels, right_pixels, left_pixels;
 
@@ -585,14 +648,12 @@ void WaveFunctionCollapse2D::createConnections()
 			if (chekPixels(left_pixels, right_pixels))
 				tiles[i].connections[3].push_back(j);
 
-			if (load_proggress)
-				printf("load progress: %f.2%%\r", progress / float(tiles.size() * tiles.size()) * 100.0);
+			progress = _progress / float(tiles.size() * tiles.size()) * 100.0;
 		}
 	}
-	printf("load progress: 100.00%%\n");
 }
 
-void WaveFunctionCollapse2D::createRotationsConnections()
+void WaveFunctionCollapse2D::createRotationsConnections(float& progress)
 {
 	int tile_count = tiles.size();
 	for (int i = 0; i < tile_count; i++)
@@ -604,17 +665,18 @@ void WaveFunctionCollapse2D::createRotationsConnections()
 			{
 				tile.image_name = tiles[i].image_name;
 				tile.rotaion = r;
+				tile.real_tile_id = i;
 				tiles.push_back(tile);
 			}
 		}
 	}
 
-	float progress = 0;
+	float _progress = 0;
 	for (int i = 0; i < tiles.size(); i++)
 	{
 		for (int j = 0; j < tiles.size(); j++)
 		{
-			progress++;
+			_progress++;
 			int i_rotation = tiles[i].rotaion;
 			int j_rotation = tiles[j].rotaion;
 			// create UP //
@@ -648,12 +710,9 @@ void WaveFunctionCollapse2D::createRotationsConnections()
 			if (chekPixels(left_pixels, right_pixels))
 				tiles[i].connections[3].push_back(j);
 
-			if(load_proggress)
-				printf("load progress: %.2f%%\r", progress / float(tiles.size() * tiles.size()) * 100.0);
+			progress = _progress / float(tiles.size() * tiles.size()) * 100.0;
 		}
 	}
-
-	printf("load progress: 100.00%%\n");
 }
 
 void WaveFunctionCollapse2D::showLoadProgress(bool load)
