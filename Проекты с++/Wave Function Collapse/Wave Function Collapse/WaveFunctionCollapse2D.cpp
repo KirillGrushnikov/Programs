@@ -80,14 +80,13 @@ void WaveFunctionCollapse2D::setTileInGrid(int tile_id, unsigned x, unsigned y, 
 	if (tile_id == -1)
 	{
 		int index = (x + y * size.x);
-
 		std::vector<int> cell_options;
 		for (int i = 0; i < tiles.size(); i++)
 			cell_options.push_back(i);
 
+
 		grid[index].collapsed = false;
 		grid[index].options = cell_options;
-		grid[index].id = index;
 
 		drawing_tiles[index].texture = tex_void;
 		drawing_tiles[index].sprite.setTextureRect(sf::IntRect(sf::Vector2i(0, 0), (sf::Vector2i)drawing_tiles[index].texture.getSize()));
@@ -106,12 +105,7 @@ void WaveFunctionCollapse2D::setTileInGrid(int tile_id, unsigned x, unsigned y, 
 
 	if (tile_id < tiles.size())
 	{
-		Cell cell;
 		int index = (x + y * size.x);
-
-		grid[index].collapsed = true;
-
-		cell.id = index;
 
 		int real_index;
 		if (rotation == 0)
@@ -119,22 +113,40 @@ void WaveFunctionCollapse2D::setTileInGrid(int tile_id, unsigned x, unsigned y, 
 		else
 			real_index = (count_tiles + (tile_id * 3)) + (rotation / 90 - 1);
 
-		cell.options.push_back(real_index);
-		grid[index].options = cell.options;
 
-		cell.options.push_back(tile_id);
-		cell.options.push_back(rotation);
+		if (!grid[index].collapsed)
+		{
+			grid[index].collapsed = true;
+
+			Cell cell;
+			cell.id = index;
+			cell.options.push_back(real_index);
+			grid[index].options = cell.options;
+
+			cell.options.push_back(tile_id);
+			cell.options.push_back(rotation);
+
+			user_grid.push_back(cell);
+		}
+		else
+		{
+			for (int i = 0; i < user_grid.size(); i++)
+				if (user_grid[i].id == index)
+				{
+					user_grid[i].options[0] = real_index;
+					user_grid[i].options[1] = tile_id;
+					user_grid[i].options[2] = rotation;
+					break;
+				}
+		}
 
 		drawing_tiles[index].texture = tiles_texture[tile_id];
 		drawing_tiles[index].sprite.setTextureRect(sf::IntRect(sf::Vector2i(0, 0), (sf::Vector2i)drawing_tiles[index].texture.getSize()));
 		drawing_tiles[index].sprite.setRotation(rotation);
 		drawing_tiles[index].is_set = true;
-
-		user_grid.push_back(cell);
 		return;
 	}
-	if(!grid[x + y * size.x].collapsed)
-		std::cout << "Error: tile - " << tile_id << " not found" << std::endl;
+	std::cout << "Error: tile - " << tile_id << " not found" << std::endl;
 }
 
 void WaveFunctionCollapse2D::clearPrevTiles()
