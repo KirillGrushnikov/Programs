@@ -58,6 +58,7 @@ private:
 	void createRotationsConnections(float& progress);
 
 	bool load_proggress;
+	bool first_create;
 	int count_tiles;
 public:
 	bool is_complete;

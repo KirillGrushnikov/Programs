@@ -6,7 +6,8 @@ WaveFunctionCollapse2D::WaveFunctionCollapse2D(int size_x, int size_y) :
 	is_complete(false),
 	is_drawing(false),
 	is_rotation(false),
-	random(true)
+	random(true),
+	first_create(true)
 {
 	setSize(size_x, size_y);
 	tex_void.loadFromFile("tiles\\void.png");
@@ -156,37 +157,40 @@ void WaveFunctionCollapse2D::clearPrevTiles()
 
 void WaveFunctionCollapse2D::create(float& progress)
 {
-	if (random)
+	if (first_create)
 	{
-		srand(std::time(NULL));
-	}
-	else
-		srand(seed);
-
-	tiles_texture.resize(tiles.size());
-	for (int i = 0; i < tiles.size(); i++)
-	{
-		tiles_texture[i].loadFromFile(tiles[i].image_name);
-	}
-
-	if (is_rotation)
-		createRotationsConnections(progress);
-	else
-		createConnections(progress);
-
-	// create grid
-	std::vector<int> cell_options;
-	for (int i = 0; i < tiles.size(); i++)
-			cell_options.push_back(i);
-
-	for (int i = 0; i < size.x; i++)
-		for (int j = 0; j < size.y; j++)
+		first_create = false;
+		if (random)
 		{
-			grid[i + j * size.x].id = (i + j * size.x);
-			if (!grid[i + j * size.x].collapsed)
-				grid[i + j * size.x].options = cell_options;
+			srand(std::time(NULL));
+		}
+		else
+			srand(seed);
+
+		tiles_texture.resize(tiles.size());
+		for (int i = 0; i < tiles.size(); i++)
+		{
+			tiles_texture[i].loadFromFile(tiles[i].image_name);
 		}
 
+		if (is_rotation)
+			createRotationsConnections(progress);
+		else
+			createConnections(progress);
+
+		// create grid
+		std::vector<int> cell_options;
+		for (int i = 0; i < tiles.size(); i++)
+			cell_options.push_back(i);
+
+		for (int i = 0; i < size.x; i++)
+			for (int j = 0; j < size.y; j++)
+			{
+				grid[i + j * size.x].id = (i + j * size.x);
+				if (!grid[i + j * size.x].collapsed)
+					grid[i + j * size.x].options = cell_options;
+			}
+	}
 	update();
 }
 
@@ -510,8 +514,10 @@ int* WaveFunctionCollapse2D::generateGrid(int attempts)
 	float progress = 0;
 	create(progress);
 
+	int attempts_all = attempts;
 	while (!is_complete)
 	{
+		std::cout << "Attempt: " << attempts_all- attempts << "\r";
 		if (!is_failed)
 			update();
 		else
@@ -519,7 +525,10 @@ int* WaveFunctionCollapse2D::generateGrid(int attempts)
 			clear();
 			attempts--;
 			if (attempts < 0)
+			{
+				std::cout << "Grid not create (attempts: " << attempts_all << " ended)" << std::endl;
 				return nullptr;
+			}
 		}
 	}
 	
@@ -527,6 +536,9 @@ int* WaveFunctionCollapse2D::generateGrid(int attempts)
 	for (int i = 0; i < grid.size(); i++)
 		res_grid[i] = grid[i].options[0];
 
+	std::cout << "Grid create" << std::endl;
+	clearPrevTiles();
+	clear();
 	return res_grid;
 }
 

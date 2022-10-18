@@ -7,11 +7,11 @@ D:\Программы\Своё\Wave Function Collapse\Wave Function Collapse\Sou
               T=float
           ]
 D:\Программы\Своё\Wave Function Collapse\Wave Function Collapse\Source.cpp(191,23): warning C4018: <: несоответствие типов со знаком и без знака
-D:\Программы\Своё\Wave Function Collapse\Wave Function Collapse\Source.cpp(233,40): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
-D:\Программы\Своё\Wave Function Collapse\Wave Function Collapse\Source.cpp(251,35): warning C4018: <: несоответствие типов со знаком и без знака
-D:\Программы\Своё\Wave Function Collapse\Wave Function Collapse\Source.cpp(258,50): warning C4018: <: несоответствие типов со знаком и без знака
-D:\Программы\Своё\Wave Function Collapse\Wave Function Collapse\Source.cpp(299,35): warning C4018: <: несоответствие типов со знаком и без знака
-D:\Программы\Своё\Wave Function Collapse\Wave Function Collapse\Source.cpp(318,39): warning C4244: =: преобразование "T" в "T", возможна потеря данных
+D:\Программы\Своё\Wave Function Collapse\Wave Function Collapse\Source.cpp(231,40): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+D:\Программы\Своё\Wave Function Collapse\Wave Function Collapse\Source.cpp(249,35): warning C4018: <: несоответствие типов со знаком и без знака
+D:\Программы\Своё\Wave Function Collapse\Wave Function Collapse\Source.cpp(256,50): warning C4018: <: несоответствие типов со знаком и без знака
+D:\Программы\Своё\Wave Function Collapse\Wave Function Collapse\Source.cpp(296,35): warning C4018: <: несоответствие типов со знаком и без знака
+D:\Программы\Своё\Wave Function Collapse\Wave Function Collapse\Source.cpp(316,39): warning C4244: =: преобразование "T" в "T", возможна потеря данных
           with
           [
               T=float
@@ -20,7 +20,7 @@ D:\Программы\Своё\Wave Function Collapse\Wave Function Collapse\Sou
           [
               T=int
           ]
-D:\Программы\Своё\Wave Function Collapse\Wave Function Collapse\Source.cpp(319,39): warning C4244: =: преобразование "T" в "T", возможна потеря данных
+D:\Программы\Своё\Wave Function Collapse\Wave Function Collapse\Source.cpp(317,39): warning C4244: =: преобразование "T" в "T", возможна потеря данных
           with
           [
               T=float
@@ -29,6 +29,6 @@ D:\Программы\Своё\Wave Function Collapse\Wave Function Collapse\Sou
           [
               T=int
           ]
-D:\Программы\Своё\Wave Function Collapse\Wave Function Collapse\Source.cpp(379,38): warning C4018: <: несоответствие типов со знаком и без знака
-D:\Программы\Своё\Wave Function Collapse\Wave Function Collapse\Source.cpp(391,31): warning C4018: <: несоответствие типов со знаком и без знака
+D:\Программы\Своё\Wave Function Collapse\Wave Function Collapse\Source.cpp(393,38): warning C4018: <: несоответствие типов со знаком и без знака
+D:\Программы\Своё\Wave Function Collapse\Wave Function Collapse\Source.cpp(405,31): warning C4018: <: несоответствие типов со знаком и без знака
   Wave Function Collapse.vcxproj -> D:\Программы\Своё\Wave Function Collapse\Debug\Wave Function Collapse.exe

@@ -205,8 +205,6 @@ int main()
     std::thread th;
     float progress = 0;
 
-
-
     while (window.isOpen())
     {
         while (window.pollEvent(event))
@@ -306,7 +304,7 @@ int main()
                         selected_tile = i;
                         buttons_tiles[i].SetTexture(Button::block);
                         sprite_tex = buttons_tiles[i].getTexture(0);
-                        sprite.setFillColor(Color(255, 255, 255, 125));
+                        sprite.setFillColor(Color(255, 255, 255, 155));
                         sprite.setTextureRect(sf::IntRect(sf::Vector2i(0, 0), (sf::Vector2i)sprite_tex.getSize()));
                         sprite.setRotation(0);
                     }
