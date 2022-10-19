@@ -23,9 +23,10 @@ std::vector<std::string> getFiles(std::string path)
     file.open(filename);
     while (!file.eof())
     {
-        std::string str;
-        file >> str;
-        if(str != "")
+        char* c_str = new char[100];
+        file.getline(c_str, 100);
+        std::string str = c_str;
+        if(str != "" && res.size() < 39)
             res.push_back(str);
     }
     file.close();
@@ -44,7 +45,7 @@ std::vector<std::string> getForders()
     {
         std::string str;
         file >> str;
-        if (str != "")
+        if (str != "" && res.size() < 8)
             res.push_back(str);
     }
     file.close();
@@ -188,6 +189,7 @@ int main()
     map.setRotations(true);
 
     std::vector<std::string> forder_list = getForders();
+
     for (int i = 0; i < forder_list.size(); i++)
     {
         button_file.SetText(forder_list[i]);
@@ -253,6 +255,7 @@ int main()
                         std::string forder = "tiles\\" + forder_list[i] + "\\";
                         std::vector<std::string> file_list = getFiles(forder);
                         int x = 1;
+
                         for (int i = 0, j = 0; i < file_list.size(); i++)
                         {
                             map.addTile(forder + file_list[i]);
