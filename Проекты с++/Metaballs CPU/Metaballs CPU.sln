@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.33130.400
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Metaballs CPU", "Metaballs CPU\Metaballs CPU.vcxproj", "{254F8A22-0896-413D-B7F5-67A0D29B8CED}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{254F8A22-0896-413D-B7F5-67A0D29B8CED}.Debug|x64.ActiveCfg = Debug|x64
+		{254F8A22-0896-413D-B7F5-67A0D29B8CED}.Debug|x64.Build.0 = Debug|x64
+		{254F8A22-0896-413D-B7F5-67A0D29B8CED}.Debug|x86.ActiveCfg = Debug|Win32
+		{254F8A22-0896-413D-B7F5-67A0D29B8CED}.Debug|x86.Build.0 = Debug|Win32
+		{254F8A22-0896-413D-B7F5-67A0D29B8CED}.Release|x64.ActiveCfg = Release|x64
+		{254F8A22-0896-413D-B7F5-67A0D29B8CED}.Release|x64.Build.0 = Release|x64
+		{254F8A22-0896-413D-B7F5-67A0D29B8CED}.Release|x86.ActiveCfg = Release|Win32
+		{254F8A22-0896-413D-B7F5-67A0D29B8CED}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E253E9AE-43FE-43F4-BD27-025409C09255}
+	EndGlobalSection
+EndGlobal

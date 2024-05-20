@@ -1,0 +1,43 @@
+﻿  Source.cpp
+D:\Программы\Своё\Metaballs CPU\Metaballs CPU\Grid.h(71,14): warning C4244: return: преобразование "double" в "float", возможна потеря данных
+D:\Программы\Своё\Metaballs CPU\Metaballs CPU\Grid.h(87,45): warning C4244: =: преобразование "float" в "T", возможна потеря данных
+          with
+          [
+              T=int
+          ]
+D:\Программы\Своё\Metaballs CPU\Metaballs CPU\Grid.h(88,45): warning C4244: =: преобразование "float" в "T", возможна потеря данных
+          with
+          [
+              T=int
+          ]
+D:\Программы\Своё\Metaballs CPU\Metaballs CPU\Grid.h(107,21): warning C4018: <: несоответствие типов со знаком и без знака
+D:\Программы\Своё\Metaballs CPU\Metaballs CPU\Grid.h(109,22): warning C4018: <: несоответствие типов со знаком и без знака
+D:\Программы\Своё\Metaballs CPU\Metaballs CPU\Grid.h(117,1): warning C4244: +=: преобразование "double" в "float", возможна потеря данных
+D:\Программы\Своё\Metaballs CPU\Metaballs CPU\Grid.h(130,21): warning C4018: <: несоответствие типов со знаком и без знака
+D:\Программы\Своё\Metaballs CPU\Metaballs CPU\Grid.h(132,22): warning C4244: инициализация: преобразование "float" в "int", возможна потеря данных
+D:\Программы\Своё\Metaballs CPU\Metaballs CPU\Grid.h(351,21): warning C4018: <: несоответствие типов со знаком и без знака
+D:\Программы\Своё\Metaballs CPU\Metaballs CPU\Grid.h(207,10): warning C4101: a: неиспользованная локальная переменная
+D:\Программы\Своё\Metaballs CPU\Metaballs CPU\Grid.h(365,21): warning C4018: <: несоответствие типов со знаком и без знака
+D:\Программы\Своё\Metaballs CPU\Metaballs CPU\Grid.h(368,21): warning C4018: <: несоответствие типов со знаком и без знака
+D:\Программы\Своё\Metaballs CPU\Metaballs CPU\Source.cpp(75,20): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+D:\Программы\Своё\Metaballs CPU\Metaballs CPU\Source.cpp(98,18): warning C4244: инициализация: преобразование "int" в "float", возможна потеря данных
+D:\Программы\Своё\Metaballs CPU\Metaballs CPU\Source.cpp(98,38): warning C4244: инициализация: преобразование "int" в "float", возможна потеря данных
+D:\Программы\Своё\Metaballs CPU\Metaballs CPU\Source.cpp(99,36): warning C4244: =: преобразование "int" в "float", возможна потеря данных
+D:\Программы\Своё\Metaballs CPU\Metaballs CPU\Source.cpp(100,36): warning C4244: =: преобразование "int" в "float", возможна потеря данных
+D:\Программы\Своё\Metaballs CPU\Metaballs CPU\Source.cpp(102,63): warning C4244: аргумент: преобразование "int" в "T", возможна потеря данных
+          with
+          [
+              T=float
+          ]
+D:\Программы\Своё\Metaballs CPU\Metaballs CPU\Source.cpp(102,43): warning C4244: аргумент: преобразование "int" в "T", возможна потеря данных
+          with
+          [
+              T=float
+          ]
+D:\Программы\Своё\Metaballs CPU\Metaballs CPU\Source.cpp(103,32): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+  Создание кода
+  1 of 352 functions ( 0.3%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    0 functions had inline decision re-evaluated but remain unchanged
+  Создание кода завершено
+  Metaballs CPU.vcxproj -> D:\Программы\Своё\Metaballs CPU\Release\Metaballs CPU.exe
