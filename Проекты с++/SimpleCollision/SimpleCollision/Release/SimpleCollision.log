@@ -1,0 +1,94 @@
+﻿  Simulation.cpp
+D:\Программы\Своё\SimpleCollision\SimpleCollision\Simulation.h(24,14): warning C4244: return: преобразование "double" в "float", возможна потеря данных
+D:\Программы\Своё\SimpleCollision\SimpleCollision\Simulation.h(55,22): warning C4018: <: несоответствие типов со знаком и без знака
+D:\Программы\Своё\SimpleCollision\SimpleCollision\Simulation.h(77,21): warning C4018: <: несоответствие типов со знаком и без знака
+D:\Программы\Своё\SimpleCollision\SimpleCollision\Simulation.h(114,31): warning C4244: аргумент: преобразование "uint64_t" в "const unsigned int", возможна потеря данных
+D:\Программы\Своё\SimpleCollision\SimpleCollision\Simulation.h(117,32): warning C4244: аргумент: преобразование "uint64_t" в "const unsigned int", возможна потеря данных
+D:\Программы\Своё\SimpleCollision\SimpleCollision\Simulation.h(203,56): warning C4244: аргумент: преобразование "int" в "T", возможна потеря данных
+          with
+          [
+              T=float
+          ]
+D:\Программы\Своё\SimpleCollision\SimpleCollision\Simulation.h(203,42): warning C4244: аргумент: преобразование "int" в "T", возможна потеря данных
+          with
+          [
+              T=float
+          ]
+D:\Программы\Своё\SimpleCollision\SimpleCollision\Simulation.h(242,19): warning C4244: инициализация: преобразование "const float" в "uint32_t", возможна потеря данных
+D:\Программы\Своё\SimpleCollision\SimpleCollision\Simulation.h(259,21): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\xmemory(681,68): warning C4244: аргумент: преобразование "_Ty" в "float", возможна потеря данных
+          with
+          [
+              _Ty=int
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\vector(708): message : выполняется компиляция ссылки на экземпляр шаблон функции "void std::_Default_allocator_traits<_Alloc>::construct<_Ty,sf::Vector2<float>,sf::Color,int>(_Alloc &,_Objty *const ,sf::Vector2<float> &&,sf::Color &&,int &&)"
+          with
+          [
+              _Alloc=std::allocator<Object>,
+              _Ty=Object,
+              _Objty=Object
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\vector(713): message : выполняется компиляция ссылки на экземпляр шаблон функции "void std::_Default_allocator_traits<_Alloc>::construct<_Ty,sf::Vector2<float>,sf::Color,int>(_Alloc &,_Objty *const ,sf::Vector2<float> &&,sf::Color &&,int &&)"
+          with
+          [
+              _Alloc=std::allocator<Object>,
+              _Ty=Object,
+              _Objty=Object
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\vector(726): message : выполняется компиляция ссылки на экземпляр шаблон функции "void std::vector<Object,std::allocator<Object>>::_Emplace_back_with_unused_capacity<_Ty,sf::Color,int>(_Ty &&,sf::Color &&,int &&)"
+          with
+          [
+              _Ty=sf::Vector2f
+          ]
+D:\Программы\Своё\SimpleCollision\SimpleCollision\Simulation.h(203): message : выполняется компиляция ссылки на экземпляр шаблон функции "void std::vector<Object,std::allocator<Object>>::emplace_back<sf::Vector2f,sf::Color,int>(sf::Vector2f &&,sf::Color &&,int &&)"
+  Source.cpp
+D:\Программы\Своё\SimpleCollision\SimpleCollision\Simulation.h(24,14): warning C4244: return: преобразование "double" в "float", возможна потеря данных
+D:\Программы\Своё\SimpleCollision\SimpleCollision\Simulation.h(55,22): warning C4018: <: несоответствие типов со знаком и без знака
+D:\Программы\Своё\SimpleCollision\SimpleCollision\Simulation.h(77,21): warning C4018: <: несоответствие типов со знаком и без знака
+D:\Программы\Своё\SimpleCollision\SimpleCollision\Simulation.h(114,31): warning C4244: аргумент: преобразование "uint64_t" в "const unsigned int", возможна потеря данных
+D:\Программы\Своё\SimpleCollision\SimpleCollision\Simulation.h(117,32): warning C4244: аргумент: преобразование "uint64_t" в "const unsigned int", возможна потеря данных
+D:\Программы\Своё\SimpleCollision\SimpleCollision\Simulation.h(203,56): warning C4244: аргумент: преобразование "int" в "T", возможна потеря данных
+          with
+          [
+              T=float
+          ]
+D:\Программы\Своё\SimpleCollision\SimpleCollision\Simulation.h(203,42): warning C4244: аргумент: преобразование "int" в "T", возможна потеря данных
+          with
+          [
+              T=float
+          ]
+D:\Программы\Своё\SimpleCollision\SimpleCollision\Simulation.h(242,19): warning C4244: инициализация: преобразование "const float" в "uint32_t", возможна потеря данных
+D:\Программы\Своё\SimpleCollision\SimpleCollision\Simulation.h(259,21): warning C4018: <: несоответствие типов со знаком и без знака
+D:\Программы\Своё\SimpleCollision\SimpleCollision\Source.cpp(14,20): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+D:\Программы\Своё\SimpleCollision\SimpleCollision\Source.cpp(64,56): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\xmemory(681,68): warning C4244: аргумент: преобразование "_Ty" в "float", возможна потеря данных
+          with
+          [
+              _Ty=int
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\vector(708): message : выполняется компиляция ссылки на экземпляр шаблон функции "void std::_Default_allocator_traits<_Alloc>::construct<_Ty,sf::Vector2<float>,sf::Color,int>(_Alloc &,_Objty *const ,sf::Vector2<float> &&,sf::Color &&,int &&)"
+          with
+          [
+              _Alloc=std::allocator<Object>,
+              _Ty=Object,
+              _Objty=Object
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\vector(713): message : выполняется компиляция ссылки на экземпляр шаблон функции "void std::_Default_allocator_traits<_Alloc>::construct<_Ty,sf::Vector2<float>,sf::Color,int>(_Alloc &,_Objty *const ,sf::Vector2<float> &&,sf::Color &&,int &&)"
+          with
+          [
+              _Alloc=std::allocator<Object>,
+              _Ty=Object,
+              _Objty=Object
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\vector(726): message : выполняется компиляция ссылки на экземпляр шаблон функции "void std::vector<Object,std::allocator<Object>>::_Emplace_back_with_unused_capacity<_Ty,sf::Color,int>(_Ty &&,sf::Color &&,int &&)"
+          with
+          [
+              _Ty=sf::Vector2f
+          ]
+D:\Программы\Своё\SimpleCollision\SimpleCollision\Simulation.h(203): message : выполняется компиляция ссылки на экземпляр шаблон функции "void std::vector<Object,std::allocator<Object>>::emplace_back<sf::Vector2f,sf::Color,int>(sf::Vector2f &&,sf::Color &&,int &&)"
+  Создание кода
+  0 of 205 functions ( 0.0%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    0 functions had inline decision re-evaluated but remain unchanged
+  Создание кода завершено
+  SimpleCollision.vcxproj -> D:\Программы\Своё\SimpleCollision\Release\SimpleCollision.exe
