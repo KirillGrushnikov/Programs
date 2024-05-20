@@ -1,0 +1,39 @@
+﻿  Source.cpp
+D:\Программы\Своё\Wave Function Collapse\Wave Function Collapse\Button.hpp(170,15): warning C4244: инициализация: преобразование "double" в "float", возможна потеря данных
+D:\Программы\Своё\Wave Function Collapse\Wave Function Collapse\Source.cpp(92,20): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+D:\Программы\Своё\Wave Function Collapse\Wave Function Collapse\Source.cpp(122,32): warning C4244: аргумент: преобразование "int" в "T", возможна потеря данных
+          with
+          [
+              T=float
+          ]
+D:\Программы\Своё\Wave Function Collapse\Wave Function Collapse\Source.cpp(193,23): warning C4018: <: несоответствие типов со знаком и без знака
+D:\Программы\Своё\Wave Function Collapse\Wave Function Collapse\Source.cpp(233,40): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+D:\Программы\Своё\Wave Function Collapse\Wave Function Collapse\Source.cpp(251,35): warning C4018: <: несоответствие типов со знаком и без знака
+D:\Программы\Своё\Wave Function Collapse\Wave Function Collapse\Source.cpp(259,50): warning C4018: <: несоответствие типов со знаком и без знака
+D:\Программы\Своё\Wave Function Collapse\Wave Function Collapse\Source.cpp(299,35): warning C4018: <: несоответствие типов со знаком и без знака
+D:\Программы\Своё\Wave Function Collapse\Wave Function Collapse\Source.cpp(319,39): warning C4244: =: преобразование "T" в "T", возможна потеря данных
+          with
+          [
+              T=float
+          ]
+          and
+          [
+              T=int
+          ]
+D:\Программы\Своё\Wave Function Collapse\Wave Function Collapse\Source.cpp(320,39): warning C4244: =: преобразование "T" в "T", возможна потеря данных
+          with
+          [
+              T=float
+          ]
+          and
+          [
+              T=int
+          ]
+D:\Программы\Своё\Wave Function Collapse\Wave Function Collapse\Source.cpp(395,38): warning C4018: <: несоответствие типов со знаком и без знака
+D:\Программы\Своё\Wave Function Collapse\Wave Function Collapse\Source.cpp(407,31): warning C4018: <: несоответствие типов со знаком и без знака
+  Создание кода
+  0 of 868 functions ( 0.0%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    0 functions had inline decision re-evaluated but remain unchanged
+  Создание кода завершено
+  Wave Function Collapse.vcxproj -> D:\Программы\Своё\Wave Function Collapse\Release\Wave Function Collapse.exe

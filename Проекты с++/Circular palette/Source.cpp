@@ -5,7 +5,8 @@
 #include <iostream>
 #include <vector>
 #include <sstream>
-#include <glut.h>
+#include "Button.hpp"
+#include "sfml_resources.h"
 
 using namespace std;
 using namespace sf;
@@ -13,7 +14,7 @@ using namespace sf;
 int windowX = 500;
 int windowY = 300;
 unsigned style = 4;
-bool Rainbow = false;
+bool Rainbow = false, sharp = true;
 float X = 0;
 
 RenderWindow window(VideoMode(windowX, windowY), "Circular palette", style, ContextSettings());
@@ -22,8 +23,10 @@ View view;
 Vector2f pos;
 Color background(30, 30, 30);
 
+HBITMAP hbit;
+
 float CountLines = 1440;
-float Step = 360/CountLines;
+double Step = 360/CountLines;
 vector<RectangleShape> lines;
 RectangleShape line;
 RectangleShape White;
@@ -34,13 +37,14 @@ CircleShape User2;
 
 Font MyFont;
 Text TRGB[4];
+Button buttons_colors[3];
+Button button_copy;
 
-int what_copy = -1;
+int what_copy = 4;
 bool copyed = false, Ctrl = false, Pip = false;
 
 Color UserColor1(255, 0, 0);
 Color UserColor2(255, 0, 0);
-RectangleShape UserColor;
 float Ur = 255, Ug = 0, Ub = 0;
 int Select = 0;
 int sch = 0, sch2 = 0;
@@ -48,19 +52,92 @@ float timer = 0, timer2 = 0;
 int SizeG = 60;
 VertexArray Triangular2(PrimitiveType::Triangles, 3);
 
+static bool windowIsActive(HWND hWnd_window)
+{
+    HWND hWnd;
+    hWnd = GetFocus();
+    if (hWnd == hWnd_window)
+        return true;
+    else
+        return false;
+}
+
+HMODULE GCM()
+{
+    HMODULE hmodule = NULL;
+    GetModuleHandleEx(
+        GET_MODULE_HANDLE_EX_FLAG_FROM_ADDRESS,
+        (LPCTSTR)GCM,
+        &hmodule);
+    return hmodule;
+}
+
+
 void Start()
 {
-    window.setFramerateLimit(60);
+    HMODULE handle = GCM();
+    HRSRC rc = FindResource(handle, MAKEINTRESOURCE(ICON), MAKEINTRESOURCE(ICONFILE));
+    HGLOBAL rcData = LoadResource(handle, rc);
+    DWORD size = SizeofResource(handle, rc);
+    const char* data = static_cast<const char*>(LockResource(rcData));
+
     Image im;
-    im.loadFromFile("palete.png");
+    im.loadFromMemory(data, size);
+
+    window.setFramerateLimit(60);
     window.setIcon(im.getSize().x, im.getSize().y, im.getPixelsPtr());
 
-    MyFont.loadFromFile("Font\\20930.ttf");
+    rc = FindResource(handle, MAKEINTRESOURCE(FONT), MAKEINTRESOURCE(FONTFILE));
+    rcData = LoadResource(handle, rc);
+    size = SizeofResource(handle, rc);
+    data = static_cast<const char*>(LockResource(rcData));
+
+    MyFont.loadFromMemory(data, size);
+
     for(int i = 0; i < 4; i++)
         TRGB[i].setFont(MyFont);
     TRGB[0].setString("255"); TRGB[1].setString("0"); TRGB[2].setString("0");
-    TRGB[0].setPosition(300, 155); TRGB[1].setPosition(370, 155); TRGB[2].setPosition(440, 155);
+
+    int x = 300, y = 155;
+    TRGB[0].setPosition(x, y); x += 70; TRGB[1].setPosition(x, y); x += 70; TRGB[2].setPosition(x, y);
+    TRGB[0].setOutlineThickness(1); TRGB[1].setOutlineThickness(1); TRGB[2].setOutlineThickness(1);
+
     TRGB[3].setFillColor(Color(0, 0, 0, 0)); TRGB[3].setPosition(300, 200); TRGB[3].setString(L"скопировано");
+
+
+    for (int i = 0; i < 3; i++)
+    {
+        for (int j = 0; j < 3; j++)
+        {
+            buttons_colors[i].SetFillColor(Color(30, 30, 30, 0), j);
+            buttons_colors[i].SetOutlineThickness(2, j);
+        }
+
+        buttons_colors[i].SetOutlineColor(Color(30, 30, 30), 0);
+        buttons_colors[i].SetOutlineColor(Color(125, 125, 125), 1);
+        buttons_colors[i].SetOutlineColor(Color(255, 255, 255), 2);
+        buttons_colors[i].SetOutlineColor(Color(0, 0, 0, 0), 3);
+
+        buttons_colors[i].SetPosition(Vector2f(300 + i * 70, 165));
+        buttons_colors[i].SetNM(buttons_colors[i].GetSize().x, buttons_colors[i].GetSize().y);
+        buttons_colors[i].SetFont(MyFont);
+        buttons_colors[i].SetTextFillColor(Color::White);
+        buttons_colors[i].SetTextPosition(Vector2f(buttons_colors[i].GetPosition().x, buttons_colors[i].GetPosition().y - 9));
+    }
+
+
+    button_copy.SetPosition(Vector2f(300, 50));
+    button_copy.SetSize(Vector2f(190, 100));
+    button_copy.SetNM(button_copy.GetSize().x, button_copy.GetSize().y);
+    for (int i = 0; i < 3; i++)
+    {
+        button_copy.SetFillColor(UserColor1, i);
+        button_copy.SetOutlineThickness(2, i);
+    }
+    button_copy.SetOutlineColor(Color(30, 30, 30), 0);
+    button_copy.SetOutlineColor(Color(125, 125, 125), 1);
+    button_copy.SetOutlineColor(Color(255, 255, 255), 2);
+    button_copy.SetOutlineColor(Color(0, 0, 0, 0), 3);
 
     line.setPosition(windowY / 2, windowY / 2);
     line.setSize(Vector2f(1, 130));
@@ -104,10 +181,6 @@ void Start()
     User2.setOutlineThickness(2);
     User2.setPosition(line.getPosition().x, line.getPosition().y);
 
-    UserColor.setPosition(300, 50);
-    UserColor.setSize(Vector2f(190, 100));
-    UserColor.setFillColor(UserColor1);
-
     Triangular[0].color = Color(255, 0, 0);
     Triangular[1].color = Color(0, 0, 0);
     Triangular[2].color = Color(255, 255, 255);
@@ -141,10 +214,100 @@ float length(Vector2f p1, Vector2f p2)
     return abs(sqrt(L));
 }
 
+string DecHex(int ch)
+{
+    string s;
+    int d;
+    char m[17] = { "0123456789ABCDEF" };
+    if (ch == 0) { s = "00"; return(s); }
+    if (ch < 16) 
+    { 
+        d = ch % 16; 
+        s = "0";
+        s += m[d];
+        return(s);
+    }
+    while (ch)
+    {
+        d = ch % 16;
+        ch /= 16;
+        s = m[d] + s;
+    }
+    return(s);
+}
+
+string NormCol(int ch)
+{
+    string s;
+    float k = 1.0 / 255.0;
+    float res = float(ch) * k;
+    s = to_string(res);
+    s.resize(4);
+    s[1] = '.';
+    return s;
+}
+
+
+HBITMAP ScreenDC(HWND DC)
+{
+    HDC hScreenDC = GetDC(DC);
+    HDC hMemoryDC = CreateCompatibleDC(hScreenDC);
+    int width = GetDeviceCaps(hScreenDC, HORZRES);
+    int height = GetDeviceCaps(hScreenDC, VERTRES);
+    HBITMAP hBitmap = CreateCompatibleBitmap(hScreenDC, width, height);
+    HBITMAP hOldBitmap = static_cast<HBITMAP>(SelectObject(hMemoryDC, hBitmap));
+    BitBlt(hMemoryDC, 0, 0, width, height, hScreenDC, 0, 0, SRCCOPY);
+    hBitmap = static_cast<HBITMAP>(SelectObject(hMemoryDC, hOldBitmap));
+    DeleteDC(hMemoryDC);
+    DeleteDC(hScreenDC);
+    return hBitmap;
+}
+
+void SaveBitMapToClipboard(const HBITMAP& hBitmap)
+{
+    //запись в буфер обмена
+    if (OpenClipboard(NULL))//открываем буфер обмена
+    {
+        EmptyClipboard(); //очищаем буфер
+        SetClipboardData(CF_BITMAP, hBitmap);//помещаем в буфер обмена
+        CloseClipboard(); //закрываем буфер обмена
+    }
+}
+
+void SaveBitMap(const HBITMAP& hBitmap)
+{
+    hbit = hBitmap;
+}
+
 void Pipette()
 {
-    keybd_event(VK_SNAPSHOT, 0, 0, 0);
+    //keybd_event(VK_SNAPSHOT, 0, 0, 0);
+    POINT Pos;
+    GetCursorPos(&Pos);
+    HDC dc = CreateCompatibleDC(NULL);
+    SelectObject(dc, hbit);
+    COLORREF color = GetPixel(dc, Pos.x, Pos.y);
+    UserColor2 = Color(GetRValue(color), GetGValue(color), GetBValue(color));
 
+    int Ucr = 0, Ucg = 0, Ucb = 0;
+    Ucr <<= 8;
+    Ucr |= UserColor2.r;
+    Ucg <<= 8;
+    Ucg |= UserColor2.g;
+    Ucb <<= 8;
+    Ucb |= UserColor2.b;
+
+    ostringstream Red;
+    Red << Ucr;
+    ostringstream Green;
+    Green << Ucg;
+    ostringstream Blue;
+    Blue << Ucb;
+
+    Ur = Ucr; Ug = Ucg; Ub = Ucb;
+    DeleteDC(dc);
+
+    /*
     if (OpenClipboard(NULL))
     {
         POINT Pos;
@@ -154,7 +317,6 @@ void Pipette()
         SelectObject(dc, hbit);
         COLORREF color = GetPixel(dc, Pos.x, Pos.y);
         UserColor2 = Color(GetRValue(color), GetGValue(color), GetBValue(color));
-        UserColor.setFillColor(UserColor2);
 
 
         int Ucr = 0, Ucg = 0, Ucb = 0;
@@ -171,19 +333,20 @@ void Pipette()
         Green << Ucg;
         ostringstream Blue;
         Blue << Ucb;
-        TRGB[0].setString(Red.str()); TRGB[1].setString(Green.str()); TRGB[2].setString(Blue.str());
+        
         Ur = Ucr; Ug = Ucg; Ub = Ucb;
 
         CloseClipboard();
         DeleteDC(dc);
     }
+    */
 }
 
-void Copy()
+void Copy(int copy = -1)
 {
     string source; //в эту переменную нужно записать текст, который в дальнейшем поместится в буфер обмена
 
-    switch (what_copy)
+    switch (copy)
     {
     case 1:
         source = TRGB[0].getString(); TRGB[3].setFillColor(Color::Red);
@@ -197,12 +360,25 @@ void Copy()
     case 4:
         source = TRGB[0].getString() + ", " + TRGB[1].getString() + ", " +  TRGB[2].getString(); TRGB[3].setFillColor(Color::White);
         break;
+    case 5:
+        if (sharp)
+        {
+            source = "#" + DecHex(Ur) + DecHex(Ug) + DecHex(Ub); TRGB[3].setFillColor(Color::White);
+        }
+        else
+        {
+            source = DecHex(Ur) + DecHex(Ug) + DecHex(Ub); TRGB[3].setFillColor(Color::White);
+        }
+        break;
+    case 6:
+        source = NormCol(Ur) + ", " + NormCol(Ug) + ", " + NormCol(Ub); TRGB[3].setFillColor(Color::White);
+        break;
     default:
         return;
         break;
     }
         //запись текста в буфер обмена
-    if (OpenClipboard(NULL) && what_copy > 0)//открываем буфер обмена
+    if (OpenClipboard(NULL) && copy > 0)//открываем буфер обмена
     {
         copyed = true;
         HGLOBAL hgBuffer;
@@ -288,31 +464,12 @@ void mouse()
     }
     else
     {
-        what_copy = 0;
         Select = 0;
     }
-
-    if (GetAsyncKeyState(2))
-    {
-        Vector2f R(TRGB[0].getPosition()); float Rs = TRGB[0].getCharacterSize();
-        Vector2f G(TRGB[1].getPosition()); float Gs = TRGB[1].getCharacterSize();
-        Vector2f B(TRGB[2].getPosition()); float Bs = TRGB[2].getCharacterSize();
-        Vector2f Rgb(UserColor.getPosition()); Vector2f Rgbs(UserColor.getSize());
-        if (pos.x > R.x && pos.x < G.x - 10 && pos.y > R.y && pos.y < R.y + Rs)
-            what_copy = 1;
-        if (pos.x > G.x - 10 && pos.x < B.x - 10 && pos.y > G.y && pos.y < G.y + Gs)
-            what_copy = 2;
-        if (pos.x > B.x - 10 && pos.x < B.x + 70 && pos.y > B.y && pos.y < B.y + Bs)
-            what_copy = 3;
-        if (pos.x > Rgb.x && pos.x < Rgb.x + Rgbs.x && pos.y > Rgb.y && pos.y < Rgb.y + Rgbs.y)
-            what_copy = 4;
-
-        timer2 = 0;
-        Copy();
-    }
+    
 }
 
-void keyboard()
+void keyboard(Button &button_sharp)
 {
     if (Keyboard::isKeyPressed(Keyboard::Space))
     {
@@ -327,6 +484,45 @@ void keyboard()
         }
     }
 
+    if (GetAsyncKeyState(49))
+    {
+        what_copy = 4;
+        int x = 300, y = 165;
+        for (int i = 0; i < 3; i++)
+        {
+            buttons_colors[i].SetPosition(Vector2f(x + i * 70, y));
+            buttons_colors[i].SetTextPosition(Vector2f(buttons_colors[i].GetPosition().x, buttons_colors[i].GetPosition().y - 9));
+        }
+        button_sharp.SetTexture(Button::block);
+        button_sharp.SetVisible(false);
+    }
+
+    if (GetAsyncKeyState(50))
+    {
+        what_copy = 5;
+        int x = 310, y = 165;
+        for (int i = 0; i < 3; i++)
+        {
+            buttons_colors[i].SetPosition(Vector2f(x + i * 70, y));
+            buttons_colors[i].SetTextPosition(Vector2f(buttons_colors[i].GetPosition().x, buttons_colors[i].GetPosition().y - 9));
+        }
+        button_sharp.SetTexture(Button::peace);
+        button_sharp.SetVisible(true);
+    }
+
+    if (GetAsyncKeyState(51))
+    {
+        what_copy = 6;
+        int x = 285, y = 165;
+        for (int i = 0; i < 3; i++)
+        {
+            buttons_colors[i].SetPosition(Vector2f(x + i * 70, y));
+            buttons_colors[i].SetTextPosition(Vector2f(buttons_colors[i].GetPosition().x, buttons_colors[i].GetPosition().y - 9));
+        }
+        button_sharp.SetTexture(Button::block);
+        button_sharp.SetVisible(false);
+    }
+
     if (GetAsyncKeyState(27)) //esc выход
         exit(0);
 }
@@ -338,7 +534,6 @@ void SetColor()
     COLORREF color = GetPixel(dc, fin.x, fin.y);
     ReleaseDC(window.getSystemHandle(), dc);
     UserColor2 = Color(GetRValue(color), GetGValue(color), GetBValue(color));
-    UserColor.setFillColor(UserColor2);
 
     int Ucr = 0, Ucg = 0, Ucb = 0;
     Ucr <<= 8;
@@ -354,7 +549,6 @@ void SetColor()
     Green << Ucg;
     ostringstream Blue;
     Blue << Ucb;
-    TRGB[0].setString(Red.str()); TRGB[1].setString(Green.str()); TRGB[2].setString(Blue.str());
     Ur = Ucr; Ug = Ucg; Ub = Ucb;
 }
 
@@ -387,6 +581,19 @@ void Round()
 
 void Tick()
 {
+    switch (what_copy)
+    {
+    case 4:
+        TRGB[0].setString(to_string(UserColor2.r)); TRGB[1].setString(to_string(UserColor2.g)); TRGB[2].setString(to_string(UserColor2.b));
+        break;
+    case 5:
+        TRGB[0].setString(DecHex(UserColor2.r)); TRGB[1].setString(DecHex(UserColor2.g)); TRGB[2].setString(DecHex(UserColor2.b));
+        break;
+    case 6:
+        TRGB[0].setString(NormCol(UserColor2.r)); TRGB[1].setString(NormCol(UserColor2.g)); TRGB[2].setString(NormCol(UserColor2.b));
+        break;
+    }
+
     if (Select == 1)
     {
         SetColor();
@@ -421,8 +628,29 @@ int main()
     srand(std::time(NULL));
     Start();
 
+    Button button_sharp;
+    button_sharp.SetPosition(Vector2f(288, 165));
+    button_sharp.SetSize(Vector2f(18, 20));
+    button_sharp.SetNM(button_sharp.GetSize().x, button_sharp.GetSize().y);
+    for (int i = 0; i < 3; i++)
+    {
+        button_sharp.SetFillColor(Color(0,0,0,0), i);
+        button_sharp.SetOutlineThickness(2, i);
+    }
+    button_sharp.SetOutlineColor(Color(30, 30, 30), 0);
+    button_sharp.SetOutlineColor(Color(125, 125, 125), 1);
+    button_sharp.SetOutlineColor(Color(255, 255, 255), 2);
+    button_sharp.SetOutlineColor(Color(0, 0, 0, 0), 3);
+    button_sharp.SetFont(MyFont);
+    button_sharp.SetText("#");
+    button_sharp.SetTextFillColor(Color::White);
+    button_sharp.SetTextPosition(Vector2f(button_sharp.GetPosition().x, button_sharp.GetPosition().y - 9));
+    button_sharp.SetVisible(false);
+
     Clock clock;
     double delay = 0.005;
+
+    bool button_release = true;
 
     while (window.isOpen())
     {
@@ -432,38 +660,98 @@ int main()
                 window.close();
 
             //ShowCursor(false);
-            keyboard();
+            keyboard(button_sharp);
 
             Vector2i pixelPos = Mouse::getPosition(window);//забираем коорд курсора
             pos = window.mapPixelToCoords(pixelPos);//переводим их в игровые (уходим от коорд окна)
 
             mouse();
         }
+        if (windowIsActive(window.getSystemHandle()))
+        {
+            if (GetAsyncKeyState(17) && GetAsyncKeyState(16))
+            {
+                if (!button_release)
+                    SaveBitMap(ScreenDC(NULL));
+                button_release = true;
+                Pipette();
+            }
+            else
+                button_release = false;
 
-        if (GetAsyncKeyState(17) && GetAsyncKeyState(16))
-            Pipette();
+            for (int i = 0; i < 3; i++)
+                button_copy.SetFillColor(UserColor2, i);
 
-        Tick();
+            string col_r = TRGB[0].getString();
+            string col_g = TRGB[1].getString();
+            string col_b = TRGB[2].getString();
 
-        float time = clock.getElapsedTime().asSeconds();
-        clock.restart();
-        timer += time;
-        if (timer > delay) { timer = 0; sch = 0; sch2 = 0; Round(); }
-        if(copyed) timer2 += time;
-        if (timer2 > 1) { timer2 = 0; copyed = false; TRGB[3].setFillColor(Color(0, 0, 0, 0)); }
 
-        //window.setView(view);
-        window.clear(background);
-        for (int i = 0; i < lines.size(); i++)
-            window.draw(lines[i]);
-        window.draw(Midle);
-        window.draw(Triangular2);
-        window.draw(Triangular);
-        window.draw(User1);
-        window.draw(User2);
-        window.draw(UserColor);
-        for(int i = 0; i < 4; i++)
-            window.draw(TRGB[i]);
-        window.display();
+            if (col_r.size() < 4)
+            {
+                buttons_colors[0].SetSize(Vector2f(18 * col_r.size(), 20));
+                buttons_colors[1].SetSize(Vector2f(18 * col_g.size(), 20));
+                buttons_colors[2].SetSize(Vector2f(18 * col_b.size(), 20));
+            }
+            else
+            {
+                buttons_colors[0].SetSize(Vector2f(18 * col_r.size()-9, 20));
+                buttons_colors[1].SetSize(Vector2f(18 * col_g.size()-9, 20));
+                buttons_colors[2].SetSize(Vector2f(18 * col_b.size()-9, 20));
+            }
+
+            for (int i = 0; i < 3; i++)
+                buttons_colors[i].SetNM(buttons_colors[i].GetSize().x, buttons_colors[i].GetSize().y);
+
+            buttons_colors[0].SetText(col_r);
+            buttons_colors[1].SetText(col_g);
+            buttons_colors[2].SetText(col_b);
+            
+            for (int i = 0; i < 3; i++)
+                if(buttons_colors[i].ChekClik(pos, event))
+                    Copy(i+1);
+
+            if (button_copy.ChekClik(pos, event))
+                Copy(what_copy);
+
+            if (button_sharp.ChekClik(pos, event))
+                sharp = !sharp;
+
+            if (sharp)
+            {
+                button_sharp.SetTextFillColor(Color::White);
+            }
+            else
+            {
+                button_sharp.SetTextFillColor(Color(100, 100, 100));
+            }
+            Tick();
+
+            float time = clock.getElapsedTime().asSeconds();
+            clock.restart();
+            timer += time;
+            if (timer > delay) { timer = 0; sch = 0; sch2 = 0; Round(); }
+            if (copyed) timer2 += time;
+            if (timer2 > 1) { timer2 = 0; copyed = false; TRGB[3].setFillColor(Color(0, 0, 0, 0)); }
+
+            //window.setView(view);
+            window.clear(background);
+            for (int i = 0; i < lines.size(); i++)
+                window.draw(lines[i]);
+            window.draw(Midle);
+            window.draw(Triangular2);
+            window.draw(Triangular);
+            window.draw(User1);
+            window.draw(User2);
+            button_copy.Draw(window);
+
+            for (int i = 0; i < 3; i++)
+                buttons_colors[i].Draw(window);
+
+            button_sharp.Draw(window);
+
+            window.draw(TRGB[3]);
+            window.display();
+        }
     }
 }
