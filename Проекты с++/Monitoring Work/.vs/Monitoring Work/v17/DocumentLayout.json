@@ -1,38 +1,38 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u044B\\\u041D\u043E\u0432\u043E\u0435\\Monitoring Work\\",
+  "WorkspaceRootPath": "D:\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u044B\\git release\\Programs\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B \u0441\u002B\u002B\\Monitoring Work\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{64C8DD5D-1758-4935-A7AD-1F2D14DB0BC5}|Client\\Client.vcxproj|D:\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u044B\\\u041D\u043E\u0432\u043E\u0435\\Monitoring Work\\Client\\ClientServer.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{64C8DD5D-1758-4935-A7AD-1F2D14DB0BC5}|Client\\Client.vcxproj|D:\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u044B\\git release\\Programs\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B \u0441\u002B\u002B\\Monitoring Work\\Client\\Main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{64C8DD5D-1758-4935-A7AD-1F2D14DB0BC5}|Client\\Client.vcxproj|solutionrelative:Client\\Main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{64C8DD5D-1758-4935-A7AD-1F2D14DB0BC5}|Client\\Client.vcxproj|D:\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u044B\\git release\\Programs\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B \u0441\u002B\u002B\\Monitoring Work\\Client\\ClientServer.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{64C8DD5D-1758-4935-A7AD-1F2D14DB0BC5}|Client\\Client.vcxproj|solutionrelative:Client\\ClientServer.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3AA9E0FC-A3B4-4DD6-A581-0CCBF0978C89}|Server\\Server.vcxproj|D:\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u044B\\\u041D\u043E\u0432\u043E\u0435\\Monitoring Work\\Server\\Server.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{3AA9E0FC-A3B4-4DD6-A581-0CCBF0978C89}|Server\\Server.vcxproj|D:\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u044B\\git release\\Programs\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B \u0441\u002B\u002B\\Monitoring Work\\Server\\Server.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{3AA9E0FC-A3B4-4DD6-A581-0CCBF0978C89}|Server\\Server.vcxproj|solutionrelative:Server\\Server.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3AA9E0FC-A3B4-4DD6-A581-0CCBF0978C89}|Server\\Server.vcxproj|D:\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u044B\\\u041D\u043E\u0432\u043E\u0435\\Monitoring Work\\\u041E\u0431\u0449\u0438\u0435 \u0437\u0430\u0432\u0438\u0441\u0438\u043C\u043E\u0441\u0442\u0438\\NetworkHandler.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{3AA9E0FC-A3B4-4DD6-A581-0CCBF0978C89}|Server\\Server.vcxproj|D:\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u044B\\git release\\Programs\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B \u0441\u002B\u002B\\Monitoring Work\\\u041E\u0431\u0449\u0438\u0435 \u0437\u0430\u0432\u0438\u0441\u0438\u043C\u043E\u0441\u0442\u0438\\NetworkHandler.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{3AA9E0FC-A3B4-4DD6-A581-0CCBF0978C89}|Server\\Server.vcxproj|solutionrelative:\u041E\u0431\u0449\u0438\u0435 \u0437\u0430\u0432\u0438\u0441\u0438\u043C\u043E\u0441\u0442\u0438\\NetworkHandler.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3AA9E0FC-A3B4-4DD6-A581-0CCBF0978C89}|Server\\Server.vcxproj|D:\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u044B\\\u041D\u043E\u0432\u043E\u0435\\Monitoring Work\\Server\\Main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{3AA9E0FC-A3B4-4DD6-A581-0CCBF0978C89}|Server\\Server.vcxproj|D:\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u044B\\git release\\Programs\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B \u0441\u002B\u002B\\Monitoring Work\\Server\\Main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{3AA9E0FC-A3B4-4DD6-A581-0CCBF0978C89}|Server\\Server.vcxproj|solutionrelative:Server\\Main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3AA9E0FC-A3B4-4DD6-A581-0CCBF0978C89}|Server\\Server.vcxproj|D:\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u044B\\\u041D\u043E\u0432\u043E\u0435\\Monitoring Work\\Server\\Server.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{3AA9E0FC-A3B4-4DD6-A581-0CCBF0978C89}|Server\\Server.vcxproj|D:\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u044B\\git release\\Programs\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B \u0441\u002B\u002B\\Monitoring Work\\Server\\Server.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{3AA9E0FC-A3B4-4DD6-A581-0CCBF0978C89}|Server\\Server.vcxproj|solutionrelative:Server\\Server.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3AA9E0FC-A3B4-4DD6-A581-0CCBF0978C89}|Server\\Server.vcxproj|D:\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u044B\\\u041D\u043E\u0432\u043E\u0435\\Monitoring Work\\\u041E\u0431\u0449\u0438\u0435 \u0437\u0430\u0432\u0438\u0441\u0438\u043C\u043E\u0441\u0442\u0438\\NetworkHandler.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{3AA9E0FC-A3B4-4DD6-A581-0CCBF0978C89}|Server\\Server.vcxproj|D:\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u044B\\git release\\Programs\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B \u0441\u002B\u002B\\Monitoring Work\\\u041E\u0431\u0449\u0438\u0435 \u0437\u0430\u0432\u0438\u0441\u0438\u043C\u043E\u0441\u0442\u0438\\NetworkHandler.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{3AA9E0FC-A3B4-4DD6-A581-0CCBF0978C89}|Server\\Server.vcxproj|solutionrelative:\u041E\u0431\u0449\u0438\u0435 \u0437\u0430\u0432\u0438\u0441\u0438\u043C\u043E\u0441\u0442\u0438\\NetworkHandler.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3AA9E0FC-A3B4-4DD6-A581-0CCBF0978C89}|Server\\Server.vcxproj|D:\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u044B\\\u041D\u043E\u0432\u043E\u0435\\Monitoring Work\\\u041E\u0431\u0449\u0438\u0435 \u0437\u0430\u0432\u0438\u0441\u0438\u043C\u043E\u0441\u0442\u0438\\general.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{3AA9E0FC-A3B4-4DD6-A581-0CCBF0978C89}|Server\\Server.vcxproj|D:\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u044B\\git release\\Programs\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B \u0441\u002B\u002B\\Monitoring Work\\\u041E\u0431\u0449\u0438\u0435 \u0437\u0430\u0432\u0438\u0441\u0438\u043C\u043E\u0441\u0442\u0438\\general.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{3AA9E0FC-A3B4-4DD6-A581-0CCBF0978C89}|Server\\Server.vcxproj|solutionrelative:\u041E\u0431\u0449\u0438\u0435 \u0437\u0430\u0432\u0438\u0441\u0438\u043C\u043E\u0441\u0442\u0438\\general.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{64C8DD5D-1758-4935-A7AD-1F2D14DB0BC5}|Client\\Client.vcxproj|D:\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u044B\\\u041D\u043E\u0432\u043E\u0435\\Monitoring Work\\Client\\Main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{64C8DD5D-1758-4935-A7AD-1F2D14DB0BC5}|Client\\Client.vcxproj|solutionrelative:Client\\Main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -42,28 +42,28 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "ClientServer.cpp",
-              "DocumentMoniker": "D:\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u044B\\\u041D\u043E\u0432\u043E\u0435\\Monitoring Work\\Client\\ClientServer.cpp",
+              "DocumentMoniker": "D:\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u044B\\git release\\Programs\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B \u0441\u002B\u002B\\Monitoring Work\\Client\\ClientServer.cpp",
               "RelativeDocumentMoniker": "Client\\ClientServer.cpp",
-              "ToolTip": "D:\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u044B\\\u041D\u043E\u0432\u043E\u0435\\Monitoring Work\\Client\\ClientServer.cpp",
+              "ToolTip": "D:\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u044B\\git release\\Programs\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B \u0441\u002B\u002B\\Monitoring Work\\Client\\ClientServer.cpp",
               "RelativeToolTip": "Client\\ClientServer.cpp",
-              "ViewState": "AQIAABgAAAAAAAAAAAAAAB8AAAAWAAAA",
+              "ViewState": "AQIAABgAAAAAAAAAAAAAACoAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-06-26T22:51:23.357Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "general.h",
-              "DocumentMoniker": "D:\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u044B\\\u041D\u043E\u0432\u043E\u0435\\Monitoring Work\\\u041E\u0431\u0449\u0438\u0435 \u0437\u0430\u0432\u0438\u0441\u0438\u043C\u043E\u0441\u0442\u0438\\general.h",
+              "DocumentMoniker": "D:\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u044B\\git release\\Programs\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B \u0441\u002B\u002B\\Monitoring Work\\\u041E\u0431\u0449\u0438\u0435 \u0437\u0430\u0432\u0438\u0441\u0438\u043C\u043E\u0441\u0442\u0438\\general.h",
               "RelativeDocumentMoniker": "\u041E\u0431\u0449\u0438\u0435 \u0437\u0430\u0432\u0438\u0441\u0438\u043C\u043E\u0441\u0442\u0438\\general.h",
-              "ToolTip": "D:\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u044B\\\u041D\u043E\u0432\u043E\u0435\\Monitoring Work\\\u041E\u0431\u0449\u0438\u0435 \u0437\u0430\u0432\u0438\u0441\u0438\u043C\u043E\u0441\u0442\u0438\\general.h",
+              "ToolTip": "D:\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u044B\\git release\\Programs\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B \u0441\u002B\u002B\\Monitoring Work\\\u041E\u0431\u0449\u0438\u0435 \u0437\u0430\u0432\u0438\u0441\u0438\u043C\u043E\u0441\u0442\u0438\\general.h",
               "RelativeToolTip": "\u041E\u0431\u0449\u0438\u0435 \u0437\u0430\u0432\u0438\u0441\u0438\u043C\u043E\u0441\u0442\u0438\\general.h",
               "ViewState": "AQIAABsAAAAAAAAAAAAAACwAAAAPAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
@@ -71,11 +71,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "Main.cpp",
-              "DocumentMoniker": "D:\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u044B\\\u041D\u043E\u0432\u043E\u0435\\Monitoring Work\\Server\\Main.cpp",
+              "DocumentMoniker": "D:\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u044B\\git release\\Programs\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B \u0441\u002B\u002B\\Monitoring Work\\Server\\Main.cpp",
               "RelativeDocumentMoniker": "Server\\Main.cpp",
-              "ToolTip": "D:\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u044B\\\u041D\u043E\u0432\u043E\u0435\\Monitoring Work\\Server\\Main.cpp",
+              "ToolTip": "D:\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u044B\\git release\\Programs\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B \u0441\u002B\u002B\\Monitoring Work\\Server\\Main.cpp",
               "RelativeToolTip": "Server\\Main.cpp",
               "ViewState": "AQIAAAcAAAAAAAAAAAAAAAsAAAA8AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
@@ -83,11 +83,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "NetworkHandler.h",
-              "DocumentMoniker": "D:\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u044B\\\u041D\u043E\u0432\u043E\u0435\\Monitoring Work\\\u041E\u0431\u0449\u0438\u0435 \u0437\u0430\u0432\u0438\u0441\u0438\u043C\u043E\u0441\u0442\u0438\\NetworkHandler.h",
+              "DocumentMoniker": "D:\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u044B\\git release\\Programs\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B \u0441\u002B\u002B\\Monitoring Work\\\u041E\u0431\u0449\u0438\u0435 \u0437\u0430\u0432\u0438\u0441\u0438\u043C\u043E\u0441\u0442\u0438\\NetworkHandler.h",
               "RelativeDocumentMoniker": "\u041E\u0431\u0449\u0438\u0435 \u0437\u0430\u0432\u0438\u0441\u0438\u043C\u043E\u0441\u0442\u0438\\NetworkHandler.h",
-              "ToolTip": "D:\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u044B\\\u041D\u043E\u0432\u043E\u0435\\Monitoring Work\\\u041E\u0431\u0449\u0438\u0435 \u0437\u0430\u0432\u0438\u0441\u0438\u043C\u043E\u0441\u0442\u0438\\NetworkHandler.h",
+              "ToolTip": "D:\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u044B\\git release\\Programs\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B \u0441\u002B\u002B\\Monitoring Work\\\u041E\u0431\u0449\u0438\u0435 \u0437\u0430\u0432\u0438\u0441\u0438\u043C\u043E\u0441\u0442\u0438\\NetworkHandler.h",
               "RelativeToolTip": "\u041E\u0431\u0449\u0438\u0435 \u0437\u0430\u0432\u0438\u0441\u0438\u043C\u043E\u0441\u0442\u0438\\NetworkHandler.h",
               "ViewState": "AQIAAFoAAAAAAAAAAAAAAHIAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
@@ -95,11 +95,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "NetworkHandler.cpp",
-              "DocumentMoniker": "D:\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u044B\\\u041D\u043E\u0432\u043E\u0435\\Monitoring Work\\\u041E\u0431\u0449\u0438\u0435 \u0437\u0430\u0432\u0438\u0441\u0438\u043C\u043E\u0441\u0442\u0438\\NetworkHandler.cpp",
+              "DocumentMoniker": "D:\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u044B\\git release\\Programs\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B \u0441\u002B\u002B\\Monitoring Work\\\u041E\u0431\u0449\u0438\u0435 \u0437\u0430\u0432\u0438\u0441\u0438\u043C\u043E\u0441\u0442\u0438\\NetworkHandler.cpp",
               "RelativeDocumentMoniker": "\u041E\u0431\u0449\u0438\u0435 \u0437\u0430\u0432\u0438\u0441\u0438\u043C\u043E\u0441\u0442\u0438\\NetworkHandler.cpp",
-              "ToolTip": "D:\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u044B\\\u041D\u043E\u0432\u043E\u0435\\Monitoring Work\\\u041E\u0431\u0449\u0438\u0435 \u0437\u0430\u0432\u0438\u0441\u0438\u043C\u043E\u0441\u0442\u0438\\NetworkHandler.cpp",
+              "ToolTip": "D:\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u044B\\git release\\Programs\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B \u0441\u002B\u002B\\Monitoring Work\\\u041E\u0431\u0449\u0438\u0435 \u0437\u0430\u0432\u0438\u0441\u0438\u043C\u043E\u0441\u0442\u0438\\NetworkHandler.cpp",
               "RelativeToolTip": "\u041E\u0431\u0449\u0438\u0435 \u0437\u0430\u0432\u0438\u0441\u0438\u043C\u043E\u0441\u0442\u0438\\NetworkHandler.cpp",
               "ViewState": "AQIAAKgAAAAAAAAAAAAuwL0AAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
@@ -107,11 +107,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "Server.cpp",
-              "DocumentMoniker": "D:\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u044B\\\u041D\u043E\u0432\u043E\u0435\\Monitoring Work\\Server\\Server.cpp",
+              "DocumentMoniker": "D:\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u044B\\git release\\Programs\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B \u0441\u002B\u002B\\Monitoring Work\\Server\\Server.cpp",
               "RelativeDocumentMoniker": "Server\\Server.cpp",
-              "ToolTip": "D:\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u044B\\\u041D\u043E\u0432\u043E\u0435\\Monitoring Work\\Server\\Server.cpp",
+              "ToolTip": "D:\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u044B\\git release\\Programs\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B \u0441\u002B\u002B\\Monitoring Work\\Server\\Server.cpp",
               "RelativeToolTip": "Server\\Server.cpp",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
@@ -119,11 +119,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "Server.h",
-              "DocumentMoniker": "D:\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u044B\\\u041D\u043E\u0432\u043E\u0435\\Monitoring Work\\Server\\Server.h",
+              "DocumentMoniker": "D:\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u044B\\git release\\Programs\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B \u0441\u002B\u002B\\Monitoring Work\\Server\\Server.h",
               "RelativeDocumentMoniker": "Server\\Server.h",
-              "ToolTip": "D:\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u044B\\\u041D\u043E\u0432\u043E\u0435\\Monitoring Work\\Server\\Server.h",
+              "ToolTip": "D:\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u044B\\git release\\Programs\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B \u0441\u002B\u002B\\Monitoring Work\\Server\\Server.h",
               "RelativeToolTip": "Server\\Server.h",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
@@ -131,15 +131,16 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 0,
               "Title": "Main.cpp",
-              "DocumentMoniker": "D:\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u044B\\\u041D\u043E\u0432\u043E\u0435\\Monitoring Work\\Client\\Main.cpp",
+              "DocumentMoniker": "D:\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u044B\\git release\\Programs\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B \u0441\u002B\u002B\\Monitoring Work\\Client\\Main.cpp",
               "RelativeDocumentMoniker": "Client\\Main.cpp",
-              "ToolTip": "D:\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u044B\\\u041D\u043E\u0432\u043E\u0435\\Monitoring Work\\Client\\Main.cpp",
+              "ToolTip": "D:\\\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u044B\\git release\\Programs\\\u041F\u0440\u043E\u0435\u043A\u0442\u044B \u0441\u002B\u002B\\Monitoring Work\\Client\\Main.cpp",
               "RelativeToolTip": "Client\\Main.cpp",
-              "ViewState": "AQIAABUAAAAAAAAAAAAqwCsAAAAAAAAA",
+              "ViewState": "AQIAABUAAAAAAAAAAAAqwDEAAAAuAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-06-25T21:29:46.942Z"
+              "WhenOpened": "2024-06-25T21:29:46.942Z",
+              "EditorCaption": ""
             }
           ]
         }

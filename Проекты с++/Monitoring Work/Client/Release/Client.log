@@ -1,10 +1,10 @@
 ﻿  NetworkHandler.cpp
-D:\Программы\Новое\Monitoring Work\Общие зависимости\NetworkHandler.cpp(161,23): warning C4018: <: несоответствие типов со знаком и без знака
+D:\Программы\git release\Programs\Проекты с++\Monitoring Work\Общие зависимости\NetworkHandler.cpp(161,23): warning C4018: <: несоответствие типов со знаком и без знака
   ClientServer.cpp
   Main.cpp
   Создание кода
-  180 of 447 functions (40.3%) were compiled, the rest were copied from previous compilation.
-    51 functions were new in current compilation
-    26 functions had inline decision re-evaluated but remain unchanged
+  469 of 475 functions (98.7%) were compiled, the rest were copied from previous compilation.
+    28 functions were new in current compilation
+    1 functions had inline decision re-evaluated but remain unchanged
   Создание кода завершено
-  Client.vcxproj -> D:\Программы\Новое\Monitoring Work\App\Client\Release\Client.exe
+  Client.vcxproj -> D:\Программы\git release\Programs\Проекты с++\Monitoring Work\App\Client\Release\Client.exe

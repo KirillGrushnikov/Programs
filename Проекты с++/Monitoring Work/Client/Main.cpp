@@ -25,8 +25,16 @@ void checkPort()
 int main(int argc, char* argv[])
 {
     uint16_t port = 1111;
+    uint16_t server_port = 1234;
 
-    std::cout << "Enter port: ";
+    std::string ip;
+    std::cout << "Enter server-ip: ";
+    std::cin >> ip;
+
+    std::cout << "Enter server-port: ";
+    std::cin >> server_port;
+
+    std::cout << "Enter client-port: ";
     std::cin >> port;
     ClientServer c_server(port);
 
@@ -35,8 +43,8 @@ int main(int argc, char* argv[])
     if (c_server.start() == ServerStatus::up) {
         std::cout << "Client is active!" << std::endl;
         uint32_t host;
-        inet_pton(AF_INET, "127.0.0.1", &host);
-        while(!c_server.connectToServer(host, 1234))
+        inet_pton(AF_INET, ip.c_str(), &host);
+        while(!c_server.connectToServer(host, server_port))
         {
             std::this_thread::sleep_for(500ms);
             std::cout << "connected failed\r";

@@ -1,2 +1,6 @@
-﻿  ClientServer.cpp
-  Client.vcxproj -> D:\Программы\Новое\Monitoring Work\App\Client\Debug\Client.exe
+﻿  NetworkHandler.cpp
+D:\Программы\git release\Programs\Проекты с++\Monitoring Work\Общие зависимости\NetworkHandler.cpp(161,23): warning C4018: <: несоответствие типов со знаком и без знака
+  ClientServer.cpp
+  Main.cpp
+  Создание кода...
+  Client.vcxproj -> D:\Программы\git release\Programs\Проекты с++\Monitoring Work\App\Client\Debug\Client.exe
