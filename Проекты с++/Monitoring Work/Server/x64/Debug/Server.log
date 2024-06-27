@@ -1,0 +1,10 @@
+﻿  Main.cpp
+D:\Программы\Новое\Monitoring Work\Server\NetworkHandler.h(78,19): warning C4099: NetworkHandler: имя типа, ранее отображенное с помощью "class", теперь отображено с помощью "struct"
+  NetworkHandler.cpp
+D:\Программы\Новое\Monitoring Work\Server\NetworkHandler.h(78,19): warning C4099: NetworkHandler: имя типа, ранее отображенное с помощью "class", теперь отображено с помощью "struct"
+D:\Программы\Новое\Monitoring Work\Server\NetworkHandler.cpp(55,26): warning C4244: =: преобразование "SOCKET" в "int", возможна потеря данных
+D:\Программы\Новое\Monitoring Work\Server\NetworkHandler.cpp(143,25): warning C4244: инициализация: преобразование "SOCKET" в "int", возможна потеря данных
+D:\Программы\Новое\Monitoring Work\Server\NetworkHandler.cpp(267,26): warning C4267: =: преобразование из "size_t" в "int"; возможна потеря данных
+D:\Программы\Новое\Monitoring Work\Server\NetworkHandler.cpp(269,75): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
+  Создание кода...
+  Server.vcxproj -> D:\Программы\Новое\Monitoring Work\x64\Debug\Server.exe

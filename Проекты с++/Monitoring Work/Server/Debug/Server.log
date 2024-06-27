@@ -1,0 +1,4 @@
+﻿  Server.cpp
+D:\Программы\Новое\Monitoring Work\Server\Server.cpp(115,27): warning C4018: <: несоответствие типов со знаком и без знака
+D:\Программы\Новое\Monitoring Work\Server\Server.cpp(117,31): warning C4018: <: несоответствие типов со знаком и без знака
+  Server.vcxproj -> D:\Программы\Новое\Monitoring Work\App\Server\Debug\Server.exe

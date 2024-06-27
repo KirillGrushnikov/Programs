@@ -1,0 +1,9 @@
+﻿  Main.cpp
+  NetworkHandler.cpp
+  Создание кода...
+D:\Программы\Новое\Monitoring Work\Client\NetworkHandler.cpp(6,34): error C2440: static_cast: невозможно преобразовать "sockaddr_in *" в "sockaddr *"
+D:\Программы\Новое\Monitoring Work\Client\NetworkHandler.cpp(6,12): error C2660: connect: функция не принимает 2 аргументов
+D:\Программы\Новое\Monitoring Work\Client\NetworkHandler.cpp(19,26): warning C4244: =: преобразование "SOCKET" в "int", возможна потеря данных
+D:\Программы\Новое\Monitoring Work\Client\NetworkHandler.cpp(32,34): error C2440: static_cast: невозможно преобразовать "sockaddr_in *" в "sockaddr *"
+D:\Программы\Новое\Monitoring Work\Client\NetworkHandler.cpp(32,15): error C2660: bind: функция не принимает 2 аргументов
+D:\Программы\Новое\Monitoring Work\Client\NetworkHandler.cpp(34,1): error C2059: синтаксическая ошибка: }
