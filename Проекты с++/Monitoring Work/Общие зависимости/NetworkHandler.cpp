@@ -5,8 +5,7 @@ NetworkHandler* NetworkHandler::instance = nullptr;
 BOOL __stdcall NetworkHandler::ConsoleHandler(DWORD signal)
 {
     if (signal == CTRL_CLOSE_EVENT) {
-        instance->disconnectAll();
-        instance->~NetworkHandler();
+        instance->stop();
         instance = nullptr;
     }
     return TRUE;
@@ -122,8 +121,9 @@ ServerStatus NetworkHandler::start()
 void NetworkHandler::stop()
 {
     _status = ServerStatus::close;
-    joinTheads();
-    client_list.clear();
+    disconnectAll();
+    shutdown(serverSocket, SD_BOTH);
+    closesocket(serverSocket);
     WSACleanup();
 }
 
