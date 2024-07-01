@@ -42,7 +42,7 @@ inline std::string strSocketStatus(SocketStatus status)
 enum class DataType : uint8_t {
 	message = 1,
 	image = 2,
-	image_size = 3,
+	image_data = 3,
 	user_data = 4
 };
 
@@ -54,7 +54,7 @@ struct DataBuffer {
 	DataBuffer() = default;
 	DataBuffer(int size, void* data_ptr, DataType type) : size(size), data_ptr(data_ptr), type(type) {}
 	DataBuffer(const DataBuffer& other) : size(other.size), data_ptr(malloc(size)), type(other.type) { memcpy(data_ptr, other.data_ptr, size); }
-	~DataBuffer() { if (data_ptr) free(data_ptr); }
+	~DataBuffer() { if (data_ptr) free(data_ptr); size = 0; }
 
 	bool isEmpty() const { return !data_ptr || !size; }
 	operator bool() { return data_ptr && size; }

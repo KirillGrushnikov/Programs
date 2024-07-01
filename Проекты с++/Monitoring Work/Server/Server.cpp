@@ -15,18 +15,17 @@ void Server::SaveBitMapToClipboard(HBITMAP& hBitmap)
     }
 }
 
-void Server::handlerData(DataBuffer data, Client& client)
+void Server::handlerData(DataBuffer& data, Client& client)
 {
     std::string data_str = dataToStr(data);
-    if (data_str.empty())
-        return;
+    if (data_str.empty()) return;
 
     switch (data.type)
     {
     case DataType::message:
     {
         std::cout << "\nMessage received:\n";
-        std::cout << "ip: " << ipToStr(client.getHost()) << ":" << ntohs(client.getPort()) << std::endl;
+        std::cout << "ip: " << ipToStr(client.getHost())  << std::endl;
         std::cout << "msg: " << data_str << std::endl;
         break;
     }
@@ -36,8 +35,8 @@ void Server::handlerData(DataBuffer data, Client& client)
         bih.biSize = sizeof(BITMAPINFOHEADER);
         bih.biWidth = width;
         bih.biHeight = height;
-        bih.biPlanes = 1;
-        bih.biBitCount = 32;
+        bih.biPlanes = planes;
+        bih.biBitCount = bits_pixel;
         bih.biCompression = BI_RGB;
         bih.biSizeImage = 0; // Можно установить в 0 для BI_RGB
         bih.biXPelsPerMeter = 0;
@@ -48,21 +47,24 @@ void Server::handlerData(DataBuffer data, Client& client)
         BITMAPINFO bi;
         bi.bmiHeader = bih;
 
-        void* bitmap_ptr = nullptr;
-        void* sourcePtr = static_cast<char*>(data.data_ptr) + sizeof(DataType);
-        size_t size = data.size - sizeof(DataType);
+        size_t data_size = data.size - sizeof(DataType);
+        void* sourcePtr = malloc(data_size);
+        memcpy(sourcePtr, static_cast<uint8_t*>(data.data_ptr) + sizeof(DataType), data_size);
+
         HDC hdc = GetDC(NULL);
-        HBITMAP hBitmap = CreateDIBSection(hdc, &bi, DIB_RGB_COLORS, &bitmap_ptr, NULL, 0);
-        memcpy(bitmap_ptr, sourcePtr, size);
+        HBITMAP hBitmap = CreateDIBitmap(hdc, &bih, CBM_INIT, sourcePtr, &bi, DIB_RGB_COLORS);
         ReleaseDC(NULL, hdc);
         SaveBitMapToClipboard(hBitmap);
         DeleteObject(hBitmap);
+        free(sourcePtr);
+        std::cout << "\nPrint screen received:\n";
+        std::cout << "ip: " << ipToStr(client.getHost())  << std::endl;
         break;
     }
-    case DataType::image_size:
+    case DataType::image_data:
     {
         std::istringstream iss(data_str);
-        iss >> width >> height;
+        iss >> width >> height >> planes >> bits_pixel;
         break;
     }
     case DataType::user_data:

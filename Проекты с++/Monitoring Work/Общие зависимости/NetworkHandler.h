@@ -49,7 +49,7 @@ protected:
 
     std::string ipToStr(uint32_t host);
 
-    virtual void handlerData(DataBuffer data, Client& client);
+    virtual void handlerData(DataBuffer& data, Client& client);
 
     virtual void handlerConnect(Client& client);
 

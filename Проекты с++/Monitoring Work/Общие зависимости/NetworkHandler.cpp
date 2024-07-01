@@ -33,18 +33,18 @@ std::string NetworkHandler::ipToStr(uint32_t host)
     return ip_string;
 }
 
-void NetworkHandler::handlerData(DataBuffer data, Client& client)
+void NetworkHandler::handlerData(DataBuffer& data, Client& client)
 {
     std::string data_str = dataToStr(data);
     std::cout << "\nMessage received:\n";
-    std::cout << "ip: " << ipToStr(client.getHost()) << ":" << ntohs(client.getPort()) << std::endl;
+    std::cout << "ip: " << ipToStr(client.getHost())  << std::endl;
     std::cout << data_str;
 }
 
 void NetworkHandler::handlerConnect(Client& client)
 {
     std::cout << "\nClient connect:\n";
-    std::cout << "ip: " << ipToStr(client.getHost()) << ":" << client.getPort() << std::endl;
+    std::cout << "ip: " << ipToStr(client.getHost()) << std::endl;
     sendData("", 0);
 }
 
@@ -94,6 +94,7 @@ ServerStatus NetworkHandler::start()
         return _status = ServerStatus::err_socket_init;
 
     sockaddr_in address;
+
     address.sin_family = AF_INET;
     address.sin_addr.s_addr = INADDR_ANY;
     address.sin_addr.S_un.S_addr = INADDR_ANY;
@@ -203,12 +204,13 @@ void NetworkHandler::waitingData()
                 break;
             }
         }
-        client_mutex.unlock();
+        
         if (is_disconnect)
         {
             handlerDisconnect(*pointer);
             delete pointer;
         }
+        client_mutex.unlock();
 
         std::this_thread::sleep_for(50ms);
     }
@@ -224,9 +226,6 @@ void NetworkHandler::handlerNewConnection()
         int clientSocet = accept(serverSocket, (sockaddr*)&clientAddres, &addrlen);
         if (clientSocet != 0 && _status == ServerStatus::up)
         {
-            unsigned long mode = 1; // 1 для включения неблокирующего режима
-            ioctlsocket(clientSocet, FIONBIO, &mode);
-
             getpeername(clientSocet, (sockaddr*)&clientAddres, &addrlen);
 
             std::unique_ptr<Client> client(new Client(clientSocet, clientAddres));
@@ -332,14 +331,22 @@ DataBuffer NetworkHandler::Client::loadData()
 {
     DataBuffer buffer;
 
+    if(_status != SocketStatus::connected) return DataBuffer();
+    unsigned long mode = 1; // 1 для включения неблокирующего режима
+    ioctlsocket(socket, FIONBIO, &mode);
+
     int answ = recv(socket, (char*)&buffer.size, sizeof(buffer.size), 0);
     if (!answ) {
         disconnect();
         return DataBuffer();
     }
-    
+
+    mode = 0;
+    ioctlsocket(socket, FIONBIO, &mode);
+
     if (!buffer.size) return DataBuffer();
     buffer.data_ptr = (char*)malloc(buffer.size);
+    if(!buffer.data_ptr) return DataBuffer();
     recv(socket, (char*)buffer.data_ptr, buffer.size, 0);
 
     uint8_t* new_buffer = static_cast<uint8_t*>(buffer.data_ptr);

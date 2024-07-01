@@ -7,8 +7,7 @@ class ClientServer : public NetworkHandler
 {
 private:
     std::vector<char> printScreen();
-    std::string image_size_data;
-    size_t image_size_data_size;
+    std::string image_data;
 
     DataType send_data_type;
 
@@ -16,7 +15,7 @@ private:
     std::string computer_name;
     std::string work_group;
 
-    virtual void handlerData(DataBuffer data, Client& client) final;
+    virtual void handlerData(DataBuffer& data, Client& client) final;
 
     virtual void handlerConnect(Client& client);
 
