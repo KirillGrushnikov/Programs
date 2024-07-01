@@ -347,7 +347,15 @@ DataBuffer NetworkHandler::Client::loadData()
     if (!buffer.size) return DataBuffer();
     buffer.data_ptr = (char*)malloc(buffer.size);
     if(!buffer.data_ptr) return DataBuffer();
-    recv(socket, (char*)buffer.data_ptr, buffer.size, 0);
+    int totalBytes = 0;
+    int bytesRead = 0;
+    int bites = buffer.size;
+    while (totalBytes != buffer.size)
+    {
+        bytesRead = recv(socket, (char*)buffer.data_ptr + totalBytes, bites, 0);
+        totalBytes += bytesRead;
+        bites -= bytesRead;
+    }
 
     uint8_t* new_buffer = static_cast<uint8_t*>(buffer.data_ptr);
     buffer.type = static_cast<DataType>(new_buffer[0]);
