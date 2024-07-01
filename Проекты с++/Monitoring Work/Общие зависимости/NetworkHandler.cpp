@@ -6,12 +6,12 @@ BOOL __stdcall NetworkHandler::ConsoleHandler(DWORD signal)
 {
     if (signal == CTRL_CLOSE_EVENT) {
         instance->disconnectAll();
-        instance->stop();
         instance->~NetworkHandler();
         instance = nullptr;
     }
     return TRUE;
 }
+
 std::string NetworkHandler::dataToStr(const DataBuffer& data)
 {
     std::string data_str;
@@ -155,12 +155,12 @@ std::string NetworkHandler::getStatusStr() const
     return str;
 }
 
-void NetworkHandler::addUser(sockaddr_in client)
+void NetworkHandler::addUser(Client& client)
 {
     int sch = 0;
     for (int i = 0; i < client_all.size(); ++i)
     {
-        if (client.sin_addr.S_un.S_addr == client_all[i].address.sin_addr.S_un.S_addr && client.sin_port == client_all[i].address.sin_port)
+        if (client.address.sin_addr.S_un.S_addr == client_all[i].address.sin_addr.S_un.S_addr && client.address.sin_port == client_all[i].address.sin_port)
         {
             client_all[i].updateLastTimeActive();
             break;
@@ -169,7 +169,12 @@ void NetworkHandler::addUser(sockaddr_in client)
     }
     if (sch == client_all.size())
     {
-        client_all.push_back(client);
+        ClientData c(client.address);
+        c.user_name = client.user_name;
+        c.computer_name = client.computer_name;
+        c.work_group = client.work_group;
+        c.updateLastTimeActive();
+        client_all.push_back(c);
     }
 }
 
@@ -219,6 +224,9 @@ void NetworkHandler::handlerNewConnection()
         int clientSocet = accept(serverSocket, (sockaddr*)&clientAddres, &addrlen);
         if (clientSocet != 0 && _status == ServerStatus::up)
         {
+            unsigned long mode = 1; // 1 для включения неблокирующего режима
+            ioctlsocket(clientSocet, FIONBIO, &mode);
+
             getpeername(clientSocet, (sockaddr*)&clientAddres, &addrlen);
 
             std::unique_ptr<Client> client(new Client(clientSocet, clientAddres));
@@ -226,8 +234,8 @@ void NetworkHandler::handlerNewConnection()
             handlerConnect(*client);
 
             client_mutex.lock();
+            addUser(*client);
             client_list.emplace_back(std::move(client));
-            addUser(clientAddres);
             client_mutex.unlock();
         }
     }
@@ -358,20 +366,20 @@ bool NetworkHandler::Client::sendData(const void* buffer, const size_t size, Dat
     return true;
 }
 
-std::string NetworkHandler::ClientTime::getLastTimeActive()
+std::string NetworkHandler::ClientData::getLastTimeActive()
 {
     char date_time_str[100];
     std::strftime(date_time_str, sizeof(date_time_str), "%Y.%m.%d %H:%M", last_active_time);
     return std::string(date_time_str);
 }
 
-void NetworkHandler::ClientTime::updateLastTimeActive()
+void NetworkHandler::ClientData::updateLastTimeActive()
 {
     time_t now = time(0);
     last_active_time = new tm;
     localtime_s(last_active_time, &now);
 }
 
-NetworkHandler::ClientTime::ClientTime(sockaddr_in address) : address(address)
+NetworkHandler::ClientData::ClientData(sockaddr_in address) : address(address)
 {
 }

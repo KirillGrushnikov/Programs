@@ -42,7 +42,8 @@ inline std::string strSocketStatus(SocketStatus status)
 enum class DataType : uint8_t {
 	message = 1,
 	image = 2,
-	image_size = 3
+	image_size = 3,
+	user_data = 4
 };
 
 struct DataBuffer {

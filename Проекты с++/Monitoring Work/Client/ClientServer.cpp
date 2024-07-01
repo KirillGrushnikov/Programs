@@ -103,6 +103,105 @@ bool ClientServer::sendDataBy(uint32_t host, uint16_t port, const void* buffer, 
     return data_is_sended;
 }
 
+std::string ClientServer::getUserName()
+{
+    char username[50];
+    DWORD username_len = 50;
+    if (!GetUserNameA(username, &username_len)) {
+        std::cerr << "Ошибка при получении имени пользователя." << std::endl;
+    }
+    return std::string(username);
+}
+
+std::string ClientServer::getComputerName()
+{
+    char computerName[MAX_COMPUTERNAME_LENGTH + 1];
+    DWORD size = sizeof(computerName) / sizeof(computerName[0]);
+
+    if (!GetComputerNameA(computerName, &size)) {
+        std::cerr << "Ошибка при получении имени компьютера." << std::endl;
+    }
+    return std::string(computerName);
+}
+
+std::string ClientServer::getWorkGroup()
+{
+    LPBYTE pBuf = NULL;
+    WKSTA_INFO_100* pWorkstationInfo = nullptr;
+    NET_API_STATUS nStatus;
+
+    nStatus = NetWkstaGetInfo(NULL, 100, &pBuf);
+
+    if (nStatus == NERR_Success) {
+        pWorkstationInfo = (WKSTA_INFO_100*)pBuf;
+    }
+    else {
+        std::cerr << "Ошибка при получении информации о рабочей станции: " << nStatus << std::endl;
+    }
+
+    if (pBuf != NULL) {
+        NetApiBufferFree(pBuf);
+    }
+
+    std::string result_str = "";
+    if (pWorkstationInfo != nullptr)
+    {
+        std::wstring ws(pWorkstationInfo->wki100_langroup);
+        result_str = std::string(ws.begin(), ws.end());
+    }
+
+    return result_str;
+}
+
+void ClientServer::sendUserData()
+{
+    std::string data;
+    data += user_name + " ";
+    data += computer_name + " ";
+    data += work_group;
+    send_data_type = DataType::user_data;
+    sendDataBy(client_list.front()->getHost(), client_list.front()->getPort(), data.c_str(), data.size());
+}
+
+bool ClientServer::AddToStartup()
+{
+    HKEY hKey;
+    LONG lResult = 0;
+    bool Success = true;
+
+    WCHAR path[MAX_PATH];
+    lResult = GetModuleFileName(NULL, path, MAX_PATH);
+    Success = (lResult > 0);
+
+    const size_t count = MAX_PATH + 2;
+    WCHAR szValue[count] = {};
+
+    wcscpy_s(szValue, count, L"\"");
+    wcscat_s(szValue, count, path);
+    wcscat_s(szValue, count, L"\" ");
+
+    lResult = RegOpenKeyEx(HKEY_CURRENT_USER, L"Software\\Microsoft\\Windows\\CurrentVersion\\Run", 0, KEY_WRITE, &hKey);
+    Success = (lResult == 0);
+
+    if (Success)
+    {
+        DWORD  dwSize = (wcslen(szValue) + 1) * 2;
+        lResult = RegSetValueEx(hKey, L"Client", 0, REG_SZ, (BYTE*)szValue, dwSize);
+        Success = (lResult == 0);
+    }
+
+    if (hKey != NULL) {
+        RegCloseKey(hKey);
+        hKey = NULL;
+    }
+
+    return Success;
+}
+
 ClientServer::ClientServer(const uint16_t port) : NetworkHandler(port)
 {
+    //AddToStartup();
+    user_name = getUserName();
+    computer_name = getComputerName();
+    work_group = getWorkGroup();
 }

@@ -28,7 +28,7 @@ class NetworkHandler
 protected:
     class Client;
 
-    struct ClientTime;
+    struct ClientData;
 
     static NetworkHandler* instance;
 
@@ -56,9 +56,9 @@ protected:
     virtual void handlerDisconnect(Client& client);
 
     std::list<std::unique_ptr<Client>> client_list;
-    std::vector<ClientTime> client_all;
+    std::vector<ClientData> client_all;
 
-    void addUser(sockaddr_in client);
+    void addUser(Client& client);
 
     void waitingData();
 
@@ -93,7 +93,7 @@ public:
     void disconnectAll();
 };
 
-struct NetworkHandler::ClientTime
+struct NetworkHandler::ClientData
 {
     tm* last_active_time;
 
@@ -101,11 +101,15 @@ struct NetworkHandler::ClientTime
 
     uint16_t local_port;
 
+    std::string user_name;
+    std::string computer_name;
+    std::string work_group;
+
     std::string getLastTimeActive();
 
     void updateLastTimeActive();
 
-    ClientTime(sockaddr_in address);
+    ClientData(sockaddr_in address);
 };
 
 class NetworkHandler::Client : public ClientBase {
@@ -119,6 +123,10 @@ class NetworkHandler::Client : public ClientBase {
 public:
 
     Client(int socket, sockaddr_in address);
+
+    std::string user_name;
+    std::string computer_name;
+    std::string work_group;
 
     virtual ~Client() override;
 

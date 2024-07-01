@@ -24,20 +24,16 @@ void checkPort()
 
 int main(int argc, char* argv[])
 {
-    uint16_t port = 1111;
+    setlocale(LC_ALL, "Russian");
+    srand(time(0));
+    SetConsoleCP(1251);
+    SetConsoleOutputCP(1251);
+
+    uint16_t port = rand() % 20000;
     uint16_t server_port = 1234;
+    std::string ip = "127.0.0.1";
 
-    std::string ip;
-    std::cout << "Enter server-ip: ";
-    std::cin >> ip;
-
-    std::cout << "Enter server-port: ";
-    std::cin >> server_port;
-
-    std::cout << "Enter client-port: ";
-    std::cin >> port;
     ClientServer c_server(port);
-
 
 
     if (c_server.start() == ServerStatus::up) {
@@ -49,6 +45,7 @@ int main(int argc, char* argv[])
             std::this_thread::sleep_for(500ms);
             std::cout << "connected failed\r";
         }
+        c_server.sendUserData();
         c_server.joinTheads();
     }
     else

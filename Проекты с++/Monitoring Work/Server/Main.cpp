@@ -3,6 +3,10 @@
 
 int main(int argc, char* argv[])
 {
+    setlocale(LC_ALL, "Russian");
+    SetConsoleCP(1251);
+    SetConsoleOutputCP(1251);
+
     uint16_t port = 1234;
     Server server(port);
 

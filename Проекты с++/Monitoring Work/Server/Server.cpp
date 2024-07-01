@@ -65,6 +65,14 @@ void Server::handlerData(DataBuffer data, Client& client)
         iss >> width >> height;
         break;
     }
+    case DataType::user_data:
+    {
+        std::istringstream iss(data_str);
+        iss >> client.user_name;
+        iss >> client.computer_name;
+        iss >> client.work_group;
+        setUserData(client);
+    }
     }
 }
 
@@ -77,6 +85,20 @@ void Server::sendMsg()
     sendData(msg.c_str(), msg.size());
 }
 
+void Server::setUserData(Client& client)
+{
+    for (int i = 0; i < client_all.size(); ++i)
+    {
+        if (client.getHost() == client_all[i].address.sin_addr.S_un.S_addr && client.getPort() == client_all[i].address.sin_port)
+        {
+            client_all[i].user_name = client.user_name;
+            client_all[i].computer_name = client.computer_name;
+            client_all[i].work_group = client.work_group;
+            break;
+        }
+    }
+}
+
 Server::Server(const uint16_t port) : NetworkHandler(port)
 {
 
@@ -86,17 +108,21 @@ void Server::printClientList()
 {
     int i = 0;
     std::cout << std::endl;
-    for (ClientTime& client : client_all) {
-        std::cout << i << ": ip: " << ipToStr(client.address.sin_addr.S_un.S_addr) << ":" << client.address.sin_port;
+    for (ClientData& client : client_all) {
+        std::cout << i << ":{\n";
+        std::cout << "ip: " << ipToStr(client.address.sin_addr.S_un.S_addr) << "\n";
+        std::cout << "user name: " << client.user_name << "\n";
+        std::cout << "computer name: " << client.computer_name << "\n";
+        std::cout << "work group: " << client.work_group << "\n";
         for (const std::unique_ptr<Client>& client_c : client_list)
         {
-            if (client_c->getStatus() == SocketStatus::connected && client_c->getHost() == client.address.sin_addr.S_un.S_addr && client_c->getPort() == client.address.sin_port)
+            if (client_c->getHost() == client.address.sin_addr.S_un.S_addr && client_c->getPort() == client.address.sin_port)
             {
                 client.updateLastTimeActive();
                 break;
             }
         }
-        std::cout << " " << client.getLastTimeActive() << std::endl;
+        std::cout << "last active: " << client.getLastTimeActive() << "\n}" << std::endl;
         i += 1;
     }
 }

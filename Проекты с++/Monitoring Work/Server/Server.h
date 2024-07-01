@@ -10,6 +10,8 @@ private:
 
     void sendMsg();
 
+    void setUserData(Client& client);
+
     int width, height;
 public:
     Server(const uint16_t port);

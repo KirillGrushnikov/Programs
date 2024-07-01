@@ -1,10 +1,12 @@
 ﻿  NetworkHandler.cpp
 D:\Программы\git release\Programs\Проекты с++\Monitoring Work\Общие зависимости\NetworkHandler.cpp(161,23): warning C4018: <: несоответствие типов со знаком и без знака
   ClientServer.cpp
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.40.33807\include\xutility(4672,18): warning C4244: =: преобразование "wchar_t" в "char", возможна потеря данных
   Main.cpp
+D:\Программы\git release\Programs\Проекты с++\Monitoring Work\Client\Main.cpp(28,15): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
   Создание кода
-  469 of 475 functions (98.7%) were compiled, the rest were copied from previous compilation.
-    28 functions were new in current compilation
-    1 functions had inline decision re-evaluated but remain unchanged
+  231 of 520 functions (44.4%) were compiled, the rest were copied from previous compilation.
+    119 functions were new in current compilation
+    45 functions had inline decision re-evaluated but remain unchanged
   Создание кода завершено
   Client.vcxproj -> D:\Программы\git release\Programs\Проекты с++\Monitoring Work\App\Client\Release\Client.exe
