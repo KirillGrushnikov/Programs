@@ -32,8 +32,6 @@ int main(int argc, char* argv[])
     uint16_t port = rand() % 20000;
     uint16_t server_port = 56091;
     std::string ip = "127.0.0.1";
-    std::cout << "E: ";
-    std::cin >> ip;
 
     ClientServer c_server(port);
 
