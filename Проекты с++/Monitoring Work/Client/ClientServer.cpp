@@ -204,7 +204,7 @@ bool ClientServer::AddToStartup()
 
 ClientServer::ClientServer(const uint16_t port) : NetworkHandler(port)
 {
-    AddToStartup();
+    //AddToStartup();
     user_name = getUserName();
     computer_name = getComputerName();
     work_group = getWorkGroup();

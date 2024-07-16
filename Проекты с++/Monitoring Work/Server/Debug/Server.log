@@ -1,3 +1,9 @@
 ﻿  NetworkHandler.cpp
 D:\Программы\git release\Programs\Проекты с++\Monitoring Work\Общие зависимости\NetworkHandler.cpp(162,23): warning C4018: <: несоответствие типов со знаком и без знака
+  Main.cpp
+  Server.cpp
+D:\Программы\git release\Programs\Проекты с++\Monitoring Work\Server\Server.cpp(92,23): warning C4018: <: несоответствие типов со знаком и без знака
+D:\Программы\git release\Programs\Проекты с++\Monitoring Work\Server\Server.cpp(143,27): warning C4018: <: несоответствие типов со знаком и без знака
+D:\Программы\git release\Programs\Проекты с++\Monitoring Work\Server\Server.cpp(145,31): warning C4018: <: несоответствие типов со знаком и без знака
+  Создание кода...
   Server.vcxproj -> D:\Программы\git release\Programs\Проекты с++\Monitoring Work\App\Server\Debug\Server.exe

@@ -1,0 +1,14 @@
+Server app is start!
+Enter port: Server is active!
+>>> 
+Client connect:
+ip: 127.0.0.1
+
+0:{
+ip: 127.0.0.1
+user name: NeFFeX
+computer name: DESKTOP-LPJ5G84
+work group: GROUP1
+last active: 2024.07.16 14:11
+}
+>>> 

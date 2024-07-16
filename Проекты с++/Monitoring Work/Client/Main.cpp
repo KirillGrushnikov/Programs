@@ -33,6 +33,9 @@ int main(int argc, char* argv[])
     uint16_t server_port = 56091;
     std::string ip = "127.0.0.1";
 
+    std::cout << "Client app is start!" << std::endl;
+    std::cout << "Enter port: ";
+    std::cin >> server_port;
     ClientServer c_server(port);
 
 

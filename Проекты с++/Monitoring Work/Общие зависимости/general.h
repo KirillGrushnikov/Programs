@@ -72,3 +72,30 @@ public:
 	virtual SocketStatus getStatus() const = 0;
 	virtual SocketType getType() const = 0;
 };
+
+class dualbuf : public std::streambuf {
+public:
+	dualbuf(std::streambuf* buf1, std::streambuf* buf2) : buf1(buf1), buf2(buf2) {}
+
+protected:
+	virtual int overflow(int c) override {
+		if (c == EOF) {
+			return !EOF;
+		}
+		else {
+			int const r1 = buf1->sputc(c);
+			int const r2 = buf2->sputc(c);
+			return r1 == EOF || r2 == EOF ? EOF : c;
+		}
+	}
+
+	virtual int sync() override {
+		int const r1 = buf1->pubsync();
+		int const r2 = buf2->pubsync();
+		return r1 == 0 && r2 == 0 ? 0 : -1;
+	}
+
+private:
+	std::streambuf* buf1;
+	std::streambuf* buf2;
+};
